@@ -44,6 +44,7 @@ return packer.startup(function(use)
   use 'nvim-tree/nvim-tree.lua' -- Nvim tree
   use 'folke/tokyonight.nvim' -- TokyoNight theme
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'}) -- Treesitter
+  use 'tpope/vim-fugitive' -- fugitive
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
