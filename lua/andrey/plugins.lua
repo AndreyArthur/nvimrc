@@ -43,6 +43,7 @@ return packer.startup(function(use)
   use 'wbthomason/packer.nvim'  -- Packer itself
   use 'nvim-tree/nvim-tree.lua' -- Nvim tree
   use 'folke/tokyonight.nvim' -- TokyoNight theme
+  use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'}) -- Treesitter
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
