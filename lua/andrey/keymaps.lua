@@ -22,6 +22,16 @@ vim.g.maplocalleader = ' '
 keymap('n', '<leader>y', '"+y', opts)
 keymap('n', '<leader>p', '"+p', opts)
 
+-- Navigate between buffers and tabs
+keymap('n', '<leader>bh', ':bprevious<cr>', opts)
+keymap('n', '<leader>bl', ':bnext<cr>', opts)
+keymap('n', '<leader>th', 'gT', opts)
+keymap('n', '<leader>tl', 'gt', opts)
+keymap('n', '<leader>tn', ':tabnew<cr>', opts)
+
+-- Enter in terminal mode
+keymap('n', '<leader>tt', ':terminal<cr>', opts)
+
 -- Visual --
 
 -- Stay in indent mode
