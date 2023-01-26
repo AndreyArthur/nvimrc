@@ -44,9 +44,10 @@ return packer.startup(function(use)
   use 'wbthomason/packer.nvim'  -- Packer itself
 
   -- Filetree
-  use 'nvim-tree/nvim-tree.lua' -- Nvim tree
-  use 'nvim-tree/nvim-web-devicons' -- Nvim tree icons
-
+  use {
+    'nvim-tree/nvim-tree.lua', -- Nvim tree
+    requires = 'nvim-tree/nvim-web-devicons' -- Nvim tree icons
+  }
   -- To make neovim fancy
   use {
     'nvim-lualine/lualine.nvim', -- LuaLine
