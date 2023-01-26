@@ -40,20 +40,35 @@ packer.init({
 
 -- Installed Plugins
 return packer.startup(function(use)
+  -- Plugin Manager
   use 'wbthomason/packer.nvim'  -- Packer itself
+
+  -- Filetree
   use 'nvim-tree/nvim-tree.lua' -- Nvim tree
-  use 'nvim-tree/nvim-web-devicons' -- Nvim tree
+  use 'nvim-tree/nvim-web-devicons' -- Nvim tree icons
+
+  -- To make neovim fancy
+  use 'nvim-lualine/lualine.nvim' -- LuaLine
   use 'folke/tokyonight.nvim' -- TokyoNight theme
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'}) -- Treesitter
-  use 'tpope/vim-fugitive' -- fugitive
-	use 'lewis6991/gitsigns.nvim' -- git signs
-  use 'nvim-lualine/lualine.nvim' -- lualine
-  use 'windwp/nvim-autopairs' -- autopairs
-  use 'nvim-lua/plenary.nvim' -- Telescope
-  use 'BurntSushi/ripgrep' -- Telescope
-  use 'nvim-telescope/telescope.nvim' -- Telescope
+
+  -- Git Utilities
+  use 'tpope/vim-fugitive' -- Fugitive
+	use 'lewis6991/gitsigns.nvim' -- Git Signs
+
+  -- Telescope (Live Grep, Find Files, Buffers, Help)
   use {
-    'VonHeikemen/lsp-zero.nvim',
+    'nvim-telescope/telescope.nvim', -- Telescope
+    requires = {
+      {'nvim-lua/plenary.nvim'} ,
+      {'BurntSushi/ripgrep'}
+    }
+  }
+
+  -- Code Related
+  use 'windwp/nvim-autopairs' -- AutoPairs
+  use {
+    'VonHeikemen/lsp-zero.nvim', -- Lsp
     branch = 'v1.x',
     requires = {
       -- LSP Support
