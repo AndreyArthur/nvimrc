@@ -3,6 +3,16 @@ local cmp = require('cmp')
 
 
 lsp.preset('recommended')
+-- Fix all eslint issues on save
+vim.cmd [[autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js EslintFixAll]]
+lsp.configure('eslint', {
+  settings = {
+    codeActionOnSave = {
+      enable = true,
+      mode = "all"
+    }
+  }
+})
 lsp.configure('sumneko_lua', {
   settings = {
     Lua = {
