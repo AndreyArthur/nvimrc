@@ -29,6 +29,7 @@ keymap('v', '<', '<gv', opts)
 keymap('v', '>', '>gv', opts)
 --  Use system clipboard
 keymap('v', '<leader>y', '"+y', opts)
+keymap('v', '<leader>p', '"+p', opts)
 
 -- Plugins --
 
