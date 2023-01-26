@@ -49,6 +49,9 @@ return packer.startup(function(use)
 	use 'lewis6991/gitsigns.nvim' -- git signs
   use 'nvim-lualine/lualine.nvim' -- lualine
   use 'windwp/nvim-autopairs' -- autopairs
+  use 'nvim-lua/plenary.nvim' -- Telescope
+  use 'BurntSushi/ripgrep' -- Telescope
+  use 'nvim-telescope/telescope.nvim' -- Telescope
   use {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v1.x',
