@@ -47,6 +47,7 @@ return packer.startup(function(use)
   use 'tpope/vim-fugitive' -- fugitive
 	use 'lewis6991/gitsigns.nvim' -- git signs
   use 'nvim-lualine/lualine.nvim' -- lualine
+  use 'windwp/nvim-autopairs' -- autopairs
   use {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v1.x',
