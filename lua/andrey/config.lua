@@ -24,6 +24,7 @@ local options = {
   relativenumber = true,                   -- set relative numbered lines
   numberwidth = 4,                         -- set number column width to 4
   hidden = false,                          -- does not allow to exit the buffer without saving
+  colorcolumn = {81, 121},                 -- columns to indicate 80 and 120 characters
 
   signcolumn = "yes",                      -- always show the sign column, otherwise it would shift the text each time
   wrap = false,                            -- display lines as one long line
