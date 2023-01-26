@@ -32,6 +32,15 @@ keymap('n', '<leader>tn', ':tabnew<cr>', opts)
 -- Enter in terminal mode
 keymap('n', '<leader>tt', ':terminal<cr>', opts)
 
+-- Insert --
+
+-- hjkl navigation in insert mode
+keymap('i', '<c-k>', '<up>', opts)
+keymap('i', '<c-j>', '<down>', opts)
+keymap('i', '<c-h>', '<left>', opts)
+keymap('i', '<c-l>', '<right>', opts)
+
+
 -- Visual --
 
 -- Stay in indent mode
