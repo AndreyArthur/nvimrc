@@ -42,6 +42,7 @@ packer.init({
 return packer.startup(function(use)
   use 'wbthomason/packer.nvim'  -- Packer itself
   use 'nvim-tree/nvim-tree.lua' -- Nvim tree
+  use 'nvim-tree/nvim-web-devicons' -- Nvim tree
   use 'folke/tokyonight.nvim' -- TokyoNight theme
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'}) -- Treesitter
   use 'tpope/vim-fugitive' -- fugitive
