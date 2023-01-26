@@ -27,13 +27,13 @@ local diff = {
 local mode = {
 	"mode",
 	fmt = function(str)
-		return "-- " .. str .. " --"
+		return " " .. str:lower() .. " "
 	end,
 }
 
 local filetype = {
 	"filetype",
-	icons_enabled = false,
+	icons_enabled = true,
 	icon = nil,
 }
 
@@ -75,18 +75,17 @@ lualine.setup({
 		lualine_a = { branch, diagnostics },
 		lualine_b = { mode },
 		lualine_c = {},
-		-- lualine_x = { "encoding", "fileformat", "filetype" },
 		lualine_x = { diff, spaces, "encoding", filetype },
 		lualine_y = { location },
 		lualine_z = { progress },
 	},
 	inactive_sections = {
-		lualine_a = {},
-		lualine_b = {},
-		lualine_c = { "filename" },
-		lualine_x = { "location" },
-		lualine_y = {},
-		lualine_z = {},
+		lualine_a = { branch, diagnostics },
+		lualine_b = { mode },
+		lualine_c = {},
+		lualine_x = {},
+		lualine_y = { "encoding", filetype },
+		lualine_z = { location },
 	},
   tabline = {
     lualine_a = {'buffers'},
