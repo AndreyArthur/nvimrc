@@ -45,6 +45,7 @@ return packer.startup(function(use)
   use 'folke/tokyonight.nvim' -- TokyoNight theme
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'}) -- Treesitter
   use 'tpope/vim-fugitive' -- fugitive
+	use 'lewis6991/gitsigns.nvim' -- git signs
   use 'nvim-lualine/lualine.nvim' -- lualine
   use {
     'VonHeikemen/lsp-zero.nvim',
