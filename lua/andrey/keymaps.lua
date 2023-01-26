@@ -45,3 +45,6 @@ keymap('v', '<leader>p', '"+p', opts)
 
 -- Nvim Tree --
 keymap('n', '<leader>e', ':NvimTreeToggle<cr>', opts)
+
+-- Fugitive --
+keymap('n', '<leader>g', ':Git<cr>', opts)
