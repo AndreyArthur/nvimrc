@@ -13,9 +13,6 @@ This config was written from scratch by myself, it provides lsp support, complet
 - `LuaLine` - Fancy info lines.
 - `Treesitter` - Provides awesome syntax highlighting.
 
-*"Just eight plugins?"*
-*"Yeah, do you need use more than eight in VSCode?"*
-
 ## Screenshot
 
 ![Preview](./screenshot.png)
