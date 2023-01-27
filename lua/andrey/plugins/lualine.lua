@@ -20,14 +20,14 @@ local diagnostics = {
 local diff = {
 	"diff",
 	colored = false,
-	symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
+	symbols = { added = "+ ", modified = "~ ", removed = "- " }, -- changes diff symbols
   cond = hide_in_width
 }
 
 local mode = {
 	"mode",
 	fmt = function(str)
-		return " " .. str:lower() .. " "
+		return str:lower()
 	end,
 }
 
@@ -52,7 +52,7 @@ local location = {
 local progress = function()
 	local current_line = vim.fn.line(".")
 	local total_lines = vim.fn.line("$")
-	local chars = { "__", "▁▁", "▂▂", "▃▃", "▄▄", "▅▅", "▆▆", "▇▇", "██" }
+	local chars = { "  ", "▁▁", "▂▂", "▃▃", "▄▄", "▅▅", "▆▆", "▇▇", "██" }
 	local line_ratio = current_line / total_lines
 	local index = math.ceil(line_ratio * #chars)
 	return chars[index]
@@ -68,16 +68,16 @@ lualine.setup({
 		theme = "auto",
     component_separators = { left = "", right = "" },
     section_separators = { left = "", right = "" },
-		disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline" },
+		disabled_filetypes = { "alpha", "dashboard", "Outline" },
 		always_divide_middle = true,
 	},
 	sections = {
 		lualine_a = { branch, diagnostics },
 		lualine_b = { mode },
 		lualine_c = {},
-		lualine_x = { diff, spaces, "encoding", filetype },
-		lualine_y = { location },
-		lualine_z = { progress },
+		lualine_x = {},
+		lualine_y = { diff, spaces, "encoding", filetype },
+		lualine_z = { location, progress },
 	},
 	inactive_sections = {
 		lualine_a = { branch, diagnostics },
@@ -88,12 +88,12 @@ lualine.setup({
 		lualine_z = { location },
 	},
   tabline = {
-    lualine_a = {'buffers'},
-    lualine_b = {'branch'},
-    lualine_c = {'filename'},
+    lualine_a = {'filename', 'filesize'},
+    lualine_b = {'branch', 'fileformat'},
+    lualine_c = {},
     lualine_x = {},
-    lualine_y = {},
-    lualine_z = {'tabs'}
+    lualine_y = { { 'buffers', max_length = vim.o.columns / 4 } },
+    lualine_z = {'hostname', 'tabs'}
   },
-	extensions = {},
+	extensions = {'nvim-tree'},
 })
