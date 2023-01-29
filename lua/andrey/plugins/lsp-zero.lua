@@ -15,6 +15,13 @@ local cmp = require('cmp')
 -- ]d: Move to the next diagnostic. See :help vim.diagnostic.goto_next().
 
 lsp.preset('recommended')
+lsp.set_preferences({
+  set_lsp_keymaps = {
+    omit = {
+      'gi',
+    },
+  }
+});
 -- Fix all eslint issues on save
 vim.api.nvim_create_autocmd('BufWritePre', {
   pattern = { '*.tsx', '*.ts', '*.jsx', '*.js' },
