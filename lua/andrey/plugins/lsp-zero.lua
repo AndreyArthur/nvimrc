@@ -16,7 +16,11 @@ local cmp = require('cmp')
 
 lsp.preset('recommended')
 -- Fix all eslint issues on save
-vim.cmd [[autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js EslintFixAll]]
+vim.api.nvim_create_autocmd('BufWritePre', {
+  pattern = { '*.tsx', '*.ts', '*.jsx', '*.js' },
+  command = 'silent! EslintFixAll',
+  group = vim.api.nvim_create_augroup('MyAutocmdsJavaScripFormatting', {}),
+})
 lsp.configure('eslint', {
   settings = {
     codeActionOnSave = {
