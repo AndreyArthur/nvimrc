@@ -32,6 +32,9 @@ keymap('n', '<leader>tn', ':tabnew<cr>', opts)
 -- Enter in terminal mode
 keymap('n', '<leader>tt', ':terminal<cr>', opts)
 
+keymap('n', 'k', 'gk', opts)
+keymap('n', 'j', 'gj', opts)
+
 -- Edit from current file path
 vim.api.nvim_set_keymap('n', '<leader>E', ':let @-=expand(\'%:p:h\')<cr> :e <c-r>-/', { noremap = true, silent = false })
 
