@@ -71,6 +71,7 @@ return packer.startup(function(use)
 
   -- Code Related
   use 'windwp/nvim-autopairs' -- AutoPairs
+  use 'fatih/vim-go' -- Go language full support
   use {
     'VonHeikemen/lsp-zero.nvim', -- Lsp
     branch = 'v1.x',
