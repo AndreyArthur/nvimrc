@@ -35,11 +35,11 @@ lsp.configure('eslint', {
     }
   }
 })
-lsp.configure('sumneko_lua', {
+lsp.configure('lua_ls', {
   settings = {
     Lua = {
       diagnostics = {
-        globals = { 'vim'}
+        globals = { 'vim' }
       }
     }
   }
