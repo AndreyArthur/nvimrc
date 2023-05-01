@@ -54,7 +54,6 @@ return packer.startup(function(use)
     requires = { 'kyazdani42/nvim-web-devicons', opt = true } -- LuaLine icons
   }
   use 'folke/tokyonight.nvim' -- TokyoNight theme
-  use 'ellisonleao/gruvbox.nvim' -- Gruvbox theme
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'}) -- Treesitter
 
   -- Git Utilities
