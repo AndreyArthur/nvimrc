@@ -48,13 +48,15 @@ return packer.startup(function(use)
     'nvim-tree/nvim-tree.lua', -- Nvim tree
     requires = 'nvim-tree/nvim-web-devicons' -- Nvim tree icons
   }
-  -- To make neovim fancy
+
+  -- To make neovim fancier
   use {
     'nvim-lualine/lualine.nvim', -- LuaLine
     requires = { 'kyazdani42/nvim-web-devicons', opt = true } -- LuaLine icons
   }
   use 'folke/tokyonight.nvim' -- TokyoNight theme
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'}) -- Treesitter
+  use 'karb94/neoscroll.nvim' -- Neoscroll
 
   -- Git Utilities
   use 'tpope/vim-fugitive' -- Fugitive
