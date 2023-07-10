@@ -21,10 +21,12 @@ vim.g.maplocalleader = ' '
 --  Use system clipboard
 keymap('n', '<leader>y', '"+y', opts)
 keymap('n', '<leader>p', '"+p', opts)
+keymap('n', '<leader>P', '"+P', opts)
 
 -- Navigate between buffers and tabs
 keymap('n', '<leader>bh', ':bprevious<cr>', opts)
 keymap('n', '<leader>bl', ':bnext<cr>', opts)
+keymap('n', '<leader>bn', ':enew<cr>', opts)
 keymap('n', '<leader>th', 'gT', opts)
 keymap('n', '<leader>tl', 'gt', opts)
 keymap('n', '<leader>tn', ':tabnew<cr>', opts)
@@ -37,6 +39,9 @@ keymap('n', 'j', 'gj', opts)
 
 -- Delete to void
 keymap('n', '<leader>d', '"_d', opts)
+
+-- Register...
+keymap('n', '<leader>r', '"', opts)
 
 -- Edit from current file path
 vim.api.nvim_set_keymap('n', '<leader>E', ':let @-=expand(\'%:p:h\')<cr> :e <c-r>-/', { noremap = true, silent = false })
@@ -55,9 +60,14 @@ keymap('i', '<c-l>', '<right>', opts)
 -- Stay in indent mode
 keymap('v', '<', '<gv', opts)
 keymap('v', '>', '>gv', opts)
+
 --  Use system clipboard
 keymap('v', '<leader>y', '"+y', opts)
 keymap('v', '<leader>p', '"+p', opts)
+
+-- Move blocks of text
+vim.keymap.set("v", "<c-j>", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "<c-k>", ":m '<-2<CR>gv=gv")
 
 -- Plugins --
 
