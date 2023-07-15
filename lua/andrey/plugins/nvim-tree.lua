@@ -75,6 +75,6 @@ vim.opt.termguicolors = true
 
 -- setup
 vim.g.nvim_tree_disable_default_keybindings = 1
-require("nvim-tree").setup({
+require('nvim-tree').setup({
   on_attach = on_attach,
 })

@@ -1,10 +1,10 @@
 local options = {
   backup = false,                          -- avoid vim backup files
-  completeopt = { "menuone", "noselect" }, -- mostly just for cmp
+  completeopt = { 'menuone', 'noselect' }, -- mostly just for cmp
   conceallevel = 0,                        -- so that `` is visible in markdown files
-  fileencoding = "utf-8",                  -- the encoding written to a file
+  fileencoding = 'utf-8',                  -- the encoding written to a file
   hlsearch = true,                         -- highlight all matches on previous search pattern
-  mouse = "",                              -- disable mouse
+  mouse = '',                              -- disable mouse
   pumheight = 10,                          -- pop up menu height
   showmode = false,                        -- we don't need to see things like -- INSERT -- anymore
   showtabline = 2,                         -- always show tabs
@@ -25,12 +25,12 @@ local options = {
   numberwidth = 4,                         -- set number column width to 4
   hidden = false,                          -- does not allow to exit the buffer without saving
   colorcolumn = { 81, 121 },               -- columns to indicate 80 and 120 characters
-  signcolumn = "yes",                      -- always show the sign column, otherwise it would shift the text each time
+  signcolumn = 'yes',                      -- always show the sign column, otherwise it would shift the text each time
   wrap = false,                            -- display lines as one long line
   linebreak = true,                        -- if wrap is true, don't split words
   scrolloff = 4,                           -- minimal number of screen lines to keep above and below the cursor
   sidescrolloff = 4,                       -- minimal number of screen columns either side of cursor if wrap is `false`
-  background = "dark",                     -- just for some especific themes
+  background = 'dark',                     -- just for some especific themes
 }
 
 for k, v in pairs(options) do

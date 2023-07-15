@@ -66,8 +66,8 @@ keymap('v', '<leader>y', '"+y', opts)
 keymap('v', '<leader>p', '"+p', opts)
 
 -- Move blocks of text
-vim.keymap.set("v", "<c-j>", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "<c-k>", ":m '<-2<CR>gv=gv")
+vim.keymap.set('v', '<c-j>', ':m \'>+1<CR>gv=gv')
+vim.keymap.set('v', '<c-k>', ':m \'<-2<CR>gv=gv')
 
 -- Plugins --
 

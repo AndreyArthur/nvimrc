@@ -31,7 +31,7 @@ lsp.configure('eslint', {
   settings = {
     codeActionOnSave = {
       enable = true,
-      mode = "all"
+      mode = 'all'
     }
   }
 })
@@ -61,9 +61,9 @@ lsp.setup_nvim_cmp({
     ['<tab>'] = cmp.mapping.confirm { select = true },
   },
   sources = {
-    { name = "nvim_lsp" },
-    { name = "buffer" },
-    { name = "path" },
+    { name = 'nvim_lsp' },
+    { name = 'buffer' },
+    { name = 'path' },
   },
 });
 lsp.setup()
