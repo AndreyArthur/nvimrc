@@ -21,20 +21,6 @@ lsp.set_preferences({
     },
   }
 });
--- Fix all eslint issues on save
-vim.api.nvim_create_autocmd('BufWritePre', {
-  pattern = { '*.tsx', '*.ts', '*.jsx', '*.js' },
-  command = 'silent! EslintFixAll',
-  group = vim.api.nvim_create_augroup('MyAutocmdsJavaScripFormatting', {}),
-})
-lsp.configure('eslint', {
-  settings = {
-    codeActionOnSave = {
-      enable = true,
-      mode = 'all'
-    }
-  }
-})
 lsp.configure('lua_ls', {
   settings = {
     Lua = {
