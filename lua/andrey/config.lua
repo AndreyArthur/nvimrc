@@ -43,7 +43,7 @@ vim.cmd([[
     autocmd!
     autocmd TextYankPost * silent! lua vim.highlight.on_yank({
       \ higroup = 'Visual',
-      \ timeout = 100,
+      \ timeout = 150,
     \ })
   augroup end
 ]])
