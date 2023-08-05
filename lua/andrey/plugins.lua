@@ -50,6 +50,7 @@ return packer.startup(function(use)
   }
 
   -- To make neovim fancier
+  use 'folke/which-key.nvim'
   use {
     'nvim-lualine/lualine.nvim', -- LuaLine
     requires = { 'kyazdani42/nvim-web-devicons', opt = true } -- LuaLine icons
