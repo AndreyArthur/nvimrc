@@ -50,7 +50,6 @@ return packer.startup(function(use)
   }
 
   -- To make neovim fancier
-  use 'folke/which-key.nvim'
   use {
     'nvim-lualine/lualine.nvim', -- LuaLine
     requires = { 'kyazdani42/nvim-web-devicons', opt = true } -- LuaLine icons
@@ -74,6 +73,7 @@ return packer.startup(function(use)
 
   -- Code Related
   use 'windwp/nvim-autopairs' -- AutoPairs
+  use 'kylechui/nvim-surround'
   use 'fatih/vim-go' -- Go language full support
   use 'mfussenegger/nvim-lint' -- Linting
   use {
