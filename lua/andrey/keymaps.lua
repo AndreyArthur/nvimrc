@@ -3,7 +3,7 @@ local opts = { noremap = true, silent = true }
 -- Shorten function name
 local keymap = vim.api.nvim_set_keymap
 
---Remap space as leader key
+-- Remap space as leader key
 keymap('', '<space>', '<nop>', opts)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
@@ -44,7 +44,10 @@ keymap('n', '<leader>d', '"_d', opts)
 keymap('n', '<leader>r', '"', opts)
 
 -- Edit from current file path
-vim.api.nvim_set_keymap('n', '<leader>E', ':let @-=expand(\'%:p:h\')<cr> :e <c-r>-/', { noremap = true, silent = false })
+keymap('n', '<leader>E', ':let @-=expand(\'%:p:h\')<cr> :e <c-r>-/', {
+  noremap = true,
+  silent = false,
+})
 
 -- Insert --
 
@@ -66,8 +69,8 @@ keymap('v', '<leader>y', '"+y', opts)
 keymap('v', '<leader>p', '"+p', opts)
 
 -- Move blocks of text
-vim.keymap.set('v', '<c-j>', ':m \'>+1<CR>gv=gv')
-vim.keymap.set('v', '<c-k>', ':m \'<-2<CR>gv=gv')
+keymap('v', '<c-j>', ':m \'>+1<CR>gv=gv', opts)
+keymap('v', '<c-k>', ':m \'<-2<CR>gv=gv', opts)
 
 -- Plugins --
 
@@ -76,3 +79,10 @@ keymap('n', '<leader>e', ':NvimTreeToggle<cr>', opts)
 
 -- Fugitive
 keymap('n', '<leader>g', ':Git<cr>', opts)
+
+-- Command --
+
+keymap('c', '<c-h>', '<left>', { noremap = true })
+keymap('c', '<c-j>', '<down>', { noremap = true })
+keymap('c', '<c-k>', '<up>', { noremap = true })
+keymap('c', '<c-l>', '<right>', { noremap = true })
