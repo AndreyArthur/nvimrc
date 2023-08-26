@@ -71,6 +71,15 @@ return packer.startup(function(use)
     }
   }
 
+  -- Debugging
+  use {
+    'mfussenegger/nvim-dap',
+    requires = {
+      'rcarriga/nvim-dap-ui',
+      'jay-babu/mason-nvim-dap.nvim',
+    }
+  }
+
   -- Code Related
   use 'windwp/nvim-autopairs' -- AutoPairs
   use 'kylechui/nvim-surround'
