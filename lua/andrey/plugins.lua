@@ -55,7 +55,13 @@ return packer.startup(function(use)
     requires = { 'kyazdani42/nvim-web-devicons', opt = true } -- LuaLine icons
   }
   use 'folke/tokyonight.nvim' -- TokyoNight theme
-  use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'}) -- Treesitter
+  use {
+    'nvim-treesitter/nvim-treesitter', -- Treesitter
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter-textobjects',
+    },
+    build = ':TSUpdate',
+  }
   use 'karb94/neoscroll.nvim' -- Neoscroll
 
   -- Git Utilities
@@ -80,11 +86,16 @@ return packer.startup(function(use)
     }
   }
 
+  -- Performance
+  use {
+    'm4xshen/hardtime.nvim',
+    requires = { 'MunifTanjim/nui.nvim', 'nvim-lua/plenary.nvim' }
+  }
+
   -- Code Related
   use 'windwp/nvim-autopairs' -- AutoPairs
   use 'kylechui/nvim-surround'
   use 'fatih/vim-go' -- Go language full support
-  use 'mfussenegger/nvim-lint' -- Linting
   use {
     'VonHeikemen/lsp-zero.nvim', -- Lsp
     branch = 'v1.x',
