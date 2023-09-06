@@ -1,127 +1,75 @@
 local fn = vim.fn
 
--- Automatically install packer
-local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
-if fn.empty(fn.glob(install_path)) > 0 then
-	PACKER_BOOTSTRAP = fn.system({
-		'git',
-		'clone',
-		'--depth',
-		'1',
-		'https://github.com/wbthomason/packer.nvim',
-		install_path,
-	})
-	print('Installing packer close and reopen Neovim...')
-	vim.cmd([[packadd packer.nvim]])
+-- Automatically install lazy
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable",
+    lazypath,
+  })
 end
+vim.opt.rtp:prepend(lazypath)
 
--- Autocommand that reloads neovim whenever you save the plugins.lua file
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
-  augroup end
-]])
-
--- Use a protected call so we don't error out on first use
-local status_ok, packer = pcall(require, 'packer')
-if not status_ok then
-	return
-end
-
--- Have packer use a popup window
-packer.init({
-	display = {
-		open_fn = function()
-			return require('packer.util').float({ border = 'rounded' })
-		end,
-	},
-})
-
--- Installed Plugins
-return packer.startup(function(use)
-  -- Plugin Manager
-  use 'wbthomason/packer.nvim'  -- Packer itself
-
-  -- Filetree
-  use {
+require('lazy').setup({
+  {
     'nvim-tree/nvim-tree.lua', -- Nvim tree
-    requires = 'nvim-tree/nvim-web-devicons' -- Nvim tree icons
-  }
-
-  -- To make neovim fancier
-  use {
+    dependencies = 'nvim-tree/nvim-web-devicons' -- Nvim tree icons
+  },
+  {
     'nvim-lualine/lualine.nvim', -- LuaLine
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true } -- LuaLine icons
-  }
-  use 'folke/tokyonight.nvim' -- TokyoNight theme
-  use {
+    dependencies = {'nvim-tree/nvim-web-devicons' , lazy = true } -- LuaLine icons
+  },
+  'folke/tokyonight.nvim', -- TokyoNight theme
+  {
     'nvim-treesitter/nvim-treesitter', -- Treesitter
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
     },
     build = ':TSUpdate',
-  }
-  use 'karb94/neoscroll.nvim' -- Neoscroll
-
-  -- Git Utilities
-  use 'tpope/vim-fugitive' -- Fugitive
-	use 'lewis6991/gitsigns.nvim' -- Git Signs
-
-  -- Telescope (Live Grep, Find Files, Buffers, Help)
-  use {
+  },
+  'karb94/neoscroll.nvim', -- Neoscroll
+  'tpope/vim-fugitive', -- Fugitive
+  'lewis6991/gitsigns.nvim', -- Git Signs
+  {
     'nvim-telescope/telescope.nvim', -- Telescope
-    requires = {
+    dependencies = {
       {'nvim-lua/plenary.nvim'} ,
       {'BurntSushi/ripgrep'}
     }
-  }
-
-  -- Debugging
-  use {
+  },
+  {
     'mfussenegger/nvim-dap',
-    requires = {
+    dependencies = {
       'rcarriga/nvim-dap-ui',
       'jay-babu/mason-nvim-dap.nvim',
     }
-  }
-
-  -- Performance
-  use {
+  },
+  {
     'm4xshen/hardtime.nvim',
-    requires = { 'MunifTanjim/nui.nvim', 'nvim-lua/plenary.nvim' }
-  }
-
-  -- Code Related
-  use 'windwp/nvim-autopairs' -- AutoPairs
-  use 'kylechui/nvim-surround'
-  use 'fatih/vim-go' -- Go language full support
-  use {
+    dependencies = { 'MunifTanjim/nui.nvim', 'nvim-lua/plenary.nvim' }
+  },
+  'windwp/nvim-autopairs', -- AutoPairs
+  'kylechui/nvim-surround',
+  'fatih/vim-go', -- Go language full support
+  {
     'VonHeikemen/lsp-zero.nvim', -- Lsp
     branch = 'v1.x',
-    requires = {
-      -- LSP Support
-      {'neovim/nvim-lspconfig'},             -- Required
-      {'williamboman/mason.nvim'},           -- Optional
-      {'williamboman/mason-lspconfig.nvim'}, -- Optional
-
-      -- Autocompletion
-      {'hrsh7th/nvim-cmp'},         -- Required
-      {'hrsh7th/cmp-nvim-lsp'},     -- Required
-      {'hrsh7th/cmp-buffer'},       -- Optional
-      {'hrsh7th/cmp-path'},         -- Optional
-      {'saadparwaiz1/cmp_luasnip'}, -- Optional
-      {'hrsh7th/cmp-nvim-lua'},     -- Optional
-
-      -- Snippets
-      {'L3MON4D3/LuaSnip'},             -- Required
-      {'rafamadriz/friendly-snippets'}, -- Optional
+    dependencies = {
+      'neovim/nvim-lspconfig',
+      'williamboman/mason.nvim',
+      'williamboman/mason-lspconfig.nvim',
+      'hrsh7th/nvim-cmp',
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'saadparwaiz1/cmp_luasnip',
+      'hrsh7th/cmp-nvim-lua',
+      'L3MON4D3/LuaSnip',
+      'rafamadriz/friendly-snippets',
     }
   }
-
-	-- Automatically set up your configuration after cloning packer.nvim
-	-- Put this at the end after all plugins
-	if PACKER_BOOTSTRAP then
-		require('packer').sync()
-	end
-end)
+})
