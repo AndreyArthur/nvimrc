@@ -1,14 +1,12 @@
-local fn = vim.fn
-
--- Automatically install lazy
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+-- Automatically install Lazy
+local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable",
+    'git',
+    'clone',
+    '--filter=blob:none',
+    'https://github.com/folke/lazy.nvim.git',
+    '--branch=stable',
     lazypath,
   })
 end
@@ -16,8 +14,17 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
   {
-    'nvim-tree/nvim-tree.lua', -- Nvim tree
-    dependencies = 'nvim-tree/nvim-web-devicons' -- Nvim tree icons
+    'nvim-neo-tree/neo-tree.nvim',
+    branch = 'v3.x',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
+      'MunifTanjim/nui.nvim',
+      {
+        's1n7ax/nvim-window-picker',
+        version = '2.0.1'
+      },
+    }
   },
   {
     'nvim-lualine/lualine.nvim', -- LuaLine
