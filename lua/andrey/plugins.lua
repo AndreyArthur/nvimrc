@@ -59,6 +59,7 @@ require('lazy').setup({
     'm4xshen/hardtime.nvim',
     dependencies = { 'MunifTanjim/nui.nvim', 'nvim-lua/plenary.nvim' }
   },
+  'echasnovski/mini.splitjoin', -- Spread lines
   'windwp/nvim-autopairs', -- AutoPairs
   'kylechui/nvim-surround',
   'fatih/vim-go', -- Go language full support
