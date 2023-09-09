@@ -72,14 +72,6 @@ keymap('v', '<leader>p', '"+p', opts)
 keymap('v', '<c-j>', ':m \'>+1<CR>gv=gv', opts)
 keymap('v', '<c-k>', ':m \'<-2<CR>gv=gv', opts)
 
--- Plugins --
-
--- Nvim Tree
-keymap('n', '<leader>e', ':NvimTreeToggle<cr>', opts)
-
--- Fugitive
-keymap('n', '<leader>g', ':Git<cr>', opts)
-
 -- Command --
 
 keymap('c', '<c-h>', '<left>', { noremap = true })
