@@ -31,6 +31,8 @@ require('lazy').setup({
     dependencies = {'nvim-tree/nvim-web-devicons' , lazy = true } -- LuaLine icons
   },
   'folke/tokyonight.nvim', -- TokyoNight theme
+  'rebelot/kanagawa.nvim', -- Kanagawa theme
+  'ellisonleao/gruvbox.nvim', -- Gruvbox theme
   {
     'nvim-treesitter/nvim-treesitter', -- Treesitter
     dependencies = {
