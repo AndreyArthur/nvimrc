@@ -10,8 +10,8 @@ end
 local diagnostics = {
 	'diagnostics',
 	sources = { 'nvim_diagnostic' },
-	sections = { 'error', 'warn' },
-	symbols = { error = ' ', warn = ' ' },
+	sections = { 'error', 'warn', 'info', 'hint' },
+	symbols = { error = ' ', warn = ' ', info = ' ', hint = '󰌵 ' },
 	colored = false,
 	update_in_insert = false,
 	always_visible = true,
@@ -45,6 +45,9 @@ local branch = {
 
 local location = {
 	'location',
+  fmt = function(str)
+    return str .. ' '
+  end,
 	padding = 0,
 }
 
@@ -76,19 +79,19 @@ lualine.setup({
 		lualine_b = { mode },
 		lualine_c = {},
 		lualine_x = {},
-		lualine_y = { diff, spaces, 'encoding', filetype },
-		lualine_z = { location, progress },
+		lualine_y = { diff, spaces, 'filesize', 'selectioncount' },
+		lualine_z = { 'filename', location, progress },
 	},
 	inactive_sections = {
 		lualine_a = { branch, diagnostics },
 		lualine_b = { mode },
 		lualine_c = {},
 		lualine_x = {},
-		lualine_y = { 'encoding', filetype },
+		lualine_y = { 'encoding', 'filename', filetype },
 		lualine_z = { location },
 	},
   tabline = {
-    lualine_a = {'filename', 'filesize'},
+    lualine_a = { filetype, 'encoding', 'filesize' },
     lualine_b = {'branch', 'fileformat'},
     lualine_c = {},
     lualine_x = {},
