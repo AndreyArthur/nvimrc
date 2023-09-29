@@ -91,7 +91,7 @@ lualine.setup({
 		lualine_z = { location },
 	},
   tabline = {
-    lualine_a = { filetype, 'encoding', 'filesize' },
+    lualine_a = { filetype, 'encoding', },
     lualine_b = {'branch', 'fileformat'},
     lualine_c = {},
     lualine_x = {},
