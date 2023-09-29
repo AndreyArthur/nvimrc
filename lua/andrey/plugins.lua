@@ -13,6 +13,8 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
+
+  -- Filetree
   {
     'nvim-neo-tree/neo-tree.nvim',
     branch = 'v3.x',
@@ -26,13 +28,19 @@ require('lazy').setup({
       },
     }
   },
+
+  -- Statusline and Tabline
   {
     'nvim-lualine/lualine.nvim', -- LuaLine
     dependencies = {'nvim-tree/nvim-web-devicons' , lazy = true } -- LuaLine icons
   },
+
+  --Themes
   'folke/tokyonight.nvim', -- TokyoNight theme
   'rebelot/kanagawa.nvim', -- Kanagawa theme
   'ellisonleao/gruvbox.nvim', -- Gruvbox theme
+
+  -- Treesitter
   {
     'nvim-treesitter/nvim-treesitter', -- Treesitter
     dependencies = {
@@ -40,9 +48,15 @@ require('lazy').setup({
     },
     build = ':TSUpdate',
   },
+
+  -- Scrolling animations
   'karb94/neoscroll.nvim', -- Neoscroll
+
+  -- Git integration
   'tpope/vim-fugitive', -- Fugitive
   'lewis6991/gitsigns.nvim', -- Git Signs
+
+  -- Fuzzy find, Grep...
   {
     'nvim-telescope/telescope.nvim', -- Telescope
     dependencies = {
@@ -50,6 +64,8 @@ require('lazy').setup({
       {'BurntSushi/ripgrep'}
     }
   },
+
+  -- Debugger
   {
     'mfussenegger/nvim-dap',
     dependencies = {
@@ -57,14 +73,17 @@ require('lazy').setup({
       'jay-babu/mason-nvim-dap.nvim',
     }
   },
+
+  -- Vim tips
   {
     'm4xshen/hardtime.nvim',
     dependencies = { 'MunifTanjim/nui.nvim', 'nvim-lua/plenary.nvim' }
   },
+
+  -- LSP and code related things
   'echasnovski/mini.splitjoin', -- Spread lines
   'windwp/nvim-autopairs', -- AutoPairs
   'kylechui/nvim-surround',
-  'fatih/vim-go', -- Go language full support
   {
     'VonHeikemen/lsp-zero.nvim', -- Lsp
     branch = 'v1.x',
