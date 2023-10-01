@@ -39,6 +39,7 @@ require('lazy').setup({
   'folke/tokyonight.nvim', -- TokyoNight theme
   'rebelot/kanagawa.nvim', -- Kanagawa theme
   'ellisonleao/gruvbox.nvim', -- Gruvbox theme
+  'navarasu/onedark.nvim', -- One Dark theme
 
   -- Treesitter
   {
