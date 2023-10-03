@@ -1,4 +1,6 @@
-local builtin = require('telescope.builtin')
+local telescope_builtin = require('telescope.builtin')
+
+pcall(require('telescope').load_extension, 'fzf')
 
 require('telescope').setup({
   defaults = {
@@ -11,7 +13,33 @@ require('telescope').setup({
   }
 })
 
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+local find_files = function ()
+  telescope_builtin.find_files({
+    find_command = {
+      'rg',
+      '--files',
+      '--iglob',
+      '!.git',
+      '--iglob',
+      '!node_modules',
+      '--hidden',
+    },
+  })
+end
+
+local live_grep = function ()
+  telescope_builtin.live_grep({
+    additional_args = {
+      '--iglob',
+      '!.git',
+      '--iglob',
+      '!node_modules',
+      '--hidden',
+    },
+  })
+end
+
+vim.keymap.set('n', '<leader>ff', find_files, {})
+vim.keymap.set('n', '<leader>fg', live_grep, {})
+vim.keymap.set('n', '<leader>fb', telescope_builtin.buffers, {})
+vim.keymap.set('n', '<leader>fh', telescope_builtin.help_tags, {})
