@@ -85,6 +85,7 @@ require('lazy').setup({
   'echasnovski/mini.splitjoin', -- Spread lines
   'windwp/nvim-autopairs', -- AutoPairs
   'kylechui/nvim-surround',
+  'mfussenegger/nvim-lint',
   {
     'neovim/nvim-lspconfig',
     dependencies = {
