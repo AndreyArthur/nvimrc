@@ -34,6 +34,7 @@ keymap('n', '<leader>tn', ':tabnew<cr>', opts)
 -- Enter in terminal mode
 keymap('n', '<leader>tt', ':terminal<cr>', opts)
 
+-- Use virtual navigation
 keymap('n', 'k', 'gk', opts)
 keymap('n', 'j', 'gj', opts)
 
@@ -57,7 +58,6 @@ keymap('i', '<c-j>', '<down>', opts)
 keymap('i', '<c-h>', '<left>', opts)
 keymap('i', '<c-l>', '<right>', opts)
 
-
 -- Visual --
 
 -- Stay in indent mode
@@ -68,9 +68,15 @@ keymap('v', '>', '>gv', opts)
 keymap('v', '<leader>y', '"+y', opts)
 keymap('v', '<leader>p', '"+p', opts)
 
+-- Delete to void
+keymap('v', '<leader>d', '"_d', opts)
+
 -- Move blocks of text
 keymap('v', '<c-j>', ':m \'>+1<CR>gv=gv', opts)
 keymap('v', '<c-k>', ':m \'<-2<CR>gv=gv', opts)
+
+keymap('v', 'k', 'gk', opts)
+keymap('v', 'j', 'gj', opts)
 
 -- Command --
 
