@@ -69,8 +69,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
     vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
     vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-    vim.keymap.set({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
-    vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+    vim.keymap.set({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({ async = true })<cr>', opts)
+    vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action({ apply = true })<cr>', opts)
 
     vim.keymap.set('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>', opts)
     vim.keymap.set('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>', opts)
@@ -107,14 +107,14 @@ require('mason-lspconfig').setup({
           }
         }
       })
-    end
+    end,
   },
 })
 
 vim.api.nvim_create_autocmd('BufWritePre', {
   pattern = { '*.tsx', '*.ts', '*.jsx', '*.js' },
   command = 'silent! EslintFixAll',
-  group = vim.api.nvim_create_augroup('MyAutocmdsJavaScripFormatting', {}),
+  group = vim.api.nvim_create_augroup('MyAutocmdsJavaScriptFormatting', {}),
 })
 
 local kind_icons = {
@@ -162,7 +162,10 @@ cmp.setup({
       i = cmp.mapping.abort(),
       c = cmp.mapping.close(),
     },
-    ['<tab>'] = cmp.mapping.confirm { select = true },
+    ['<tab>'] = cmp.mapping.confirm({
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = true
+    }),
   }),
   snippet = {
     expand = function(args)
@@ -174,7 +177,11 @@ cmp.setup({
   },
   formatting = {
     format = function(entry, vim_item)
-      vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
+      vim_item.kind = string.format(
+        '%s %s',
+        kind_icons[vim_item.kind],
+        vim_item.kind
+      )
       vim_item.menu = ({
         buffer = "[Buffer]",
         nvim_lsp = "[LSP]",
