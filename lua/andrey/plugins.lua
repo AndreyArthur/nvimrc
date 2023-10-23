@@ -75,17 +75,10 @@ require('lazy').setup({
     }
   },
 
-  -- Vim tips
-  {
-    'm4xshen/hardtime.nvim',
-    dependencies = { 'MunifTanjim/nui.nvim', 'nvim-lua/plenary.nvim' }
-  },
-
   -- LSP and code related things
   'echasnovski/mini.splitjoin', -- Spread lines
   'windwp/nvim-autopairs', -- AutoPairs
-  'kylechui/nvim-surround',
-  'mfussenegger/nvim-lint',
+  'kylechui/nvim-surround', -- Surrounding
   {
     'neovim/nvim-lspconfig',
     dependencies = {
@@ -98,7 +91,7 @@ require('lazy').setup({
       'hrsh7th/cmp-path',
       'saadparwaiz1/cmp_luasnip',
       'hrsh7th/cmp-nvim-lua',
-      'L3MON4D3/LuaSnip',
+      { 'L3MON4D3/LuaSnip', version = "v2.*", build = "make install_jsregexp" },
     }
   }
 })

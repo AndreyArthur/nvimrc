@@ -27,7 +27,14 @@ local diff = {
 local mode = {
 	'mode',
 	fmt = function(str)
-		return str:lower()
+    local lower_mode = str:lower()
+    if (lower_mode == "v-line") then
+      return "visual line"
+    end
+    if (lower_mode == "v-block") then
+      return "visual block"
+    end
+		return lower_mode;
 	end,
 }
 
