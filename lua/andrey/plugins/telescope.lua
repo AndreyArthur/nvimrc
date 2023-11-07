@@ -9,11 +9,11 @@ require('telescope').setup({
         ['<c-j>'] = require('telescope.actions').move_selection_next,
         ['<c-k>'] = require('telescope.actions').move_selection_previous,
       },
-    }
-  }
+    },
+  },
 })
 
-local find_files = function ()
+local find_files = function()
   telescope_builtin.find_files({
     find_command = {
       'rg',
@@ -27,7 +27,7 @@ local find_files = function ()
   })
 end
 
-local live_grep = function ()
+local live_grep = function()
   telescope_builtin.live_grep({
     additional_args = {
       '--iglob',

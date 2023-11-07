@@ -5,5 +5,5 @@ splitjoin.setup({
     toggle = '<leader>ss',
     split = '',
     join = '',
-  }
+  },
 })

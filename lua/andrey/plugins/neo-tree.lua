@@ -1,18 +1,18 @@
 vim.fn.sign_define('DiagnosticSignError', {
   text = ' ',
-  texthl = 'DiagnosticSignError'
+  texthl = 'DiagnosticSignError',
 })
 vim.fn.sign_define('DiagnosticSignWarn', {
   text = ' ',
-  texthl = 'DiagnosticSignWarn'
+  texthl = 'DiagnosticSignWarn',
 })
 vim.fn.sign_define('DiagnosticSignInfo', {
   text = ' ',
-  texthl = 'DiagnosticSignInfo'
+  texthl = 'DiagnosticSignInfo',
 })
 vim.fn.sign_define('DiagnosticSignHint', {
   text = '󰌵',
-  texthl = 'DiagnosticSignHint'
+  texthl = 'DiagnosticSignHint',
 })
 
 require('window-picker').setup({
@@ -36,10 +36,10 @@ require('neo-tree').setup({
   enable_normal_mode_for_inputs = false, -- Enable normal mode for input dialogs.
   open_files_do_not_replace_types = { 'terminal', 'trouble', 'qf' }, -- when opening files, do not use windows containing these filetypes or buftypes
   sort_case_insensitive = false, -- used when sorting files and directories in the tree
-  sort_function = nil , -- use a custom function for sorting files and directories in the tree
+  sort_function = nil, -- use a custom function for sorting files and directories in the tree
   default_component_configs = {
     container = {
-      enable_character_fade = true
+      enable_character_fade = true,
     },
     indent = {
       indent_size = 2,
@@ -62,7 +62,7 @@ require('neo-tree').setup({
       -- The next two settings are only a fallback, if you use nvim-web-devicons and configure default icons there
       -- then these will never be used.
       default = '*',
-      highlight = 'NeoTreeFileIcon'
+      highlight = 'NeoTreeFileIcon',
     },
     modified = {
       symbol = '[+]',
@@ -76,17 +76,17 @@ require('neo-tree').setup({
     git_status = {
       symbols = {
         -- Change type
-        added     = '✚', -- or '', but this is redundant info if you use git_status_colors on the name
-        modified  = '', -- or '', but this is redundant info if you use git_status_colors on the name
-        deleted   = '✖',-- this can only be used in the git_status source
-        renamed   = '󰁕',-- this can only be used in the git_status source
+        added = '✚', -- or '', but this is redundant info if you use git_status_colors on the name
+        modified = '', -- or '', but this is redundant info if you use git_status_colors on the name
+        deleted = '✖', -- this can only be used in the git_status source
+        renamed = '󰁕', -- this can only be used in the git_status source
         -- Status type
         untracked = '',
-        ignored   = '',
-        unstaged  = '󰄱',
-        staged    = '',
-        conflict  = '',
-      }
+        ignored = '',
+        unstaged = '󰄱',
+        staged = '',
+        conflict = '',
+      },
     },
     -- If you don't want to use these columns, you can set `enabled = false` for each of them individually
     file_size = {
@@ -144,8 +144,8 @@ require('neo-tree').setup({
       ['a'] = {
         'add',
         config = {
-          show_path = 'none' -- 'none', 'relative', 'absolute'
-        }
+          show_path = 'none', -- 'none', 'relative', 'absolute'
+        },
       },
       ['A'] = 'add_directory', -- also accepts the optional config.show_path option like 'add'. this also supports BASH style brace expansion.
       ['d'] = 'delete',
@@ -161,7 +161,7 @@ require('neo-tree').setup({
       ['<'] = 'prev_source',
       ['>'] = 'next_source',
       ['i'] = 'show_file_details',
-    }
+    },
   },
   nesting_rules = {},
   filesystem = {
@@ -197,7 +197,11 @@ require('neo-tree').setup({
         ['<c-x>'] = 'clear_filter',
         ['[g'] = 'prev_git_modified',
         [']g'] = 'next_git_modified',
-        ['h'] = { 'show_help', nowait=false, config = { title = 'Order by', prefix_key = 'o' }},
+        ['h'] = {
+          'show_help',
+          nowait = false,
+          config = { title = 'Order by', prefix_key = 'o' },
+        },
         ['oc'] = { 'order_by_created', nowait = false },
         ['od'] = { 'order_by_diagnostics', nowait = false },
         ['og'] = { 'order_by_git_status', nowait = false },
@@ -214,7 +218,7 @@ require('neo-tree').setup({
       },
     },
 
-    commands = {} -- Add a custom command or override a global one using the same function name
+    commands = {}, -- Add a custom command or override a global one using the same function name
   },
   buffers = {
     follow_current_file = {
@@ -229,37 +233,50 @@ require('neo-tree').setup({
         ['bd'] = 'buffer_delete',
         ['<bs>'] = 'navigate_up',
         ['.'] = 'set_root',
-        ['o'] = { 'show_help', nowait=false, config = { title = 'Order by', prefix_key = 'o' }},
+        ['o'] = {
+          'show_help',
+          nowait = false,
+          config = { title = 'Order by', prefix_key = 'o' },
+        },
         ['oc'] = { 'order_by_created', nowait = false },
         ['od'] = { 'order_by_diagnostics', nowait = false },
         ['om'] = { 'order_by_modified', nowait = false },
         ['on'] = { 'order_by_name', nowait = false },
         ['os'] = { 'order_by_size', nowait = false },
         ['ot'] = { 'order_by_type', nowait = false },
-      }
+      },
     },
   },
   git_status = {
     window = {
       position = 'float',
       mappings = {
-        ['A']  = 'git_add_all',
+        ['A'] = 'git_add_all',
         ['gu'] = 'git_unstage_file',
         ['ga'] = 'git_add_file',
         ['gr'] = 'git_revert_file',
         ['gc'] = 'git_commit',
         ['gp'] = 'git_push',
         ['gg'] = 'git_commit_and_push',
-        ['o'] = { 'show_help', nowait=false, config = { title = 'Order by', prefix_key = 'o' }},
+        ['o'] = {
+          'show_help',
+          nowait = false,
+          config = { title = 'Order by', prefix_key = 'o' },
+        },
         ['oc'] = { 'order_by_created', nowait = false },
         ['od'] = { 'order_by_diagnostics', nowait = false },
         ['om'] = { 'order_by_modified', nowait = false },
         ['on'] = { 'order_by_name', nowait = false },
         ['os'] = { 'order_by_size', nowait = false },
         ['ot'] = { 'order_by_type', nowait = false },
-      }
-    }
-  }
+      },
+    },
+  },
 })
 
-vim.api.nvim_set_keymap('n', '<leader>e', ':Neotree toggle<cr>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap(
+  'n',
+  '<leader>e',
+  ':Neotree toggle<cr>',
+  { noremap = true, silent = true }
+)

@@ -45,7 +45,7 @@ keymap('n', '<leader>d', '"_d', opts)
 keymap('n', '<leader>r', '"', opts)
 
 -- Edit from current file path
-keymap('n', '<leader>E', ':let @-=expand(\'%:p:h\')<cr> :e <c-r>-/', {
+keymap('n', '<leader>E', ":let @-=expand('%:p:h')<cr> :e <c-r>-/", {
   noremap = true,
   silent = false,
 })
@@ -72,8 +72,8 @@ keymap('v', '<leader>p', '"+p', opts)
 keymap('v', '<leader>d', '"_d', opts)
 
 -- Move blocks of text
-keymap('v', '<c-j>', ':m \'>+1<CR>gv=gv', opts)
-keymap('v', '<c-k>', ':m \'<-2<CR>gv=gv', opts)
+keymap('v', '<c-j>', ":m '>+1<CR>gv=gv", opts)
+keymap('v', '<c-k>', ":m '<-2<CR>gv=gv", opts)
 
 keymap('v', 'k', 'gk', opts)
 keymap('v', 'j', 'gj', opts)
