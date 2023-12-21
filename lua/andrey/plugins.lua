@@ -24,22 +24,19 @@ require('lazy').setup({
       'MunifTanjim/nui.nvim',
       {
         's1n7ax/nvim-window-picker',
-        version = '2.0.1'
+        version = '2.0.1',
       },
-    }
+    },
   },
 
   -- Statusline and Tabline
   {
     'nvim-lualine/lualine.nvim', -- LuaLine
-    dependencies = {'nvim-tree/nvim-web-devicons' , lazy = true } -- LuaLine icons
+    dependencies = { 'nvim-tree/nvim-web-devicons', lazy = true }, -- LuaLine icons
   },
 
   --Themes
   'folke/tokyonight.nvim', -- TokyoNight theme
-  'rebelot/kanagawa.nvim', -- Kanagawa theme
-  'ellisonleao/gruvbox.nvim', -- Gruvbox theme
-  'navarasu/onedark.nvim', -- One Dark theme
 
   -- Treesitter
   {
@@ -50,9 +47,6 @@ require('lazy').setup({
     build = ':TSUpdate',
   },
 
-  -- Scrolling animations
-  'karb94/neoscroll.nvim', -- Neoscroll
-
   -- Git integration
   'tpope/vim-fugitive', -- Fugitive
   'lewis6991/gitsigns.nvim', -- Git Signs
@@ -61,9 +55,9 @@ require('lazy').setup({
   {
     'nvim-telescope/telescope.nvim', -- Telescope
     dependencies = {
-      {'nvim-lua/plenary.nvim'},
-      {'BurntSushi/ripgrep'}
-    }
+      { 'nvim-lua/plenary.nvim' },
+      { 'BurntSushi/ripgrep' },
+    },
   },
 
   -- Debugger
@@ -72,14 +66,17 @@ require('lazy').setup({
     dependencies = {
       'rcarriga/nvim-dap-ui',
       'jay-babu/mason-nvim-dap.nvim',
-    }
+    },
   },
+
+  -- Edit terminal
+  'chomosuke/term-edit.nvim',
 
   -- LSP and code related things
   'echasnovski/mini.splitjoin', -- Spread lines
   'windwp/nvim-autopairs', -- AutoPairs
   'kylechui/nvim-surround', -- Surrounding
-  'stevearc/conform.nvim', -- Formatting
+  'nvimtools/none-ls.nvim', -- Linting
   {
     'neovim/nvim-lspconfig',
     dependencies = {
@@ -92,7 +89,7 @@ require('lazy').setup({
       'hrsh7th/cmp-path',
       'saadparwaiz1/cmp_luasnip',
       'hrsh7th/cmp-nvim-lua',
-      { 'L3MON4D3/LuaSnip', version = "v2.*", build = "make install_jsregexp" },
-    }
-  }
+      { 'L3MON4D3/LuaSnip', version = 'v2.*', build = 'make install_jsregexp' },
+    },
+  },
 })
