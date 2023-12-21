@@ -50,3 +50,6 @@ vim.cmd([[
 
 -- Wrap in markdown files
 vim.cmd('au BufRead,BufNewFile *.md setlocal wrap')
+
+-- Set ejs files to html
+vim.cmd('au BufRead,BufNewFile *.ejs set filetype=html')
