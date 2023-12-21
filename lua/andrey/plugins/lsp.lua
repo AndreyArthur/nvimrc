@@ -114,23 +114,7 @@ require('mason-lspconfig').setup({
         },
       })
     end,
-    eslint = function()
-      lspconfig.eslint.setup({
-        settings = {
-          codeActionOnSave = {
-            enable = true,
-            mode = 'all',
-          },
-        },
-      })
-    end,
   },
-})
-
-vim.api.nvim_create_autocmd('BufWritePre', {
-  pattern = { '*.tsx', '*.ts', '*.jsx', '*.js' },
-  command = 'silent! EslintFixAll',
-  group = vim.api.nvim_create_augroup('MyAutocmdsJavaScriptFormatting', {}),
 })
 
 local kind_icons = {
