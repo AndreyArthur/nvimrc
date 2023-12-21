@@ -18,6 +18,10 @@ vim.g.maplocalleader = ' '
 
 -- Normal --
 
+-- Repeat last macro to pattern
+keymap('n', '<leader>,', 'N@@', opts)
+keymap('n', '<leader>.', 'n@@', opts)
+
 --  Use system clipboard
 keymap('n', '<leader>y', '"+y', opts)
 keymap('n', '<leader>p', '"+p', opts)
