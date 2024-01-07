@@ -169,7 +169,7 @@ cmp.setup({
   }),
   snippet = {
     expand = function(args)
-      require('luasnip').lsp_expand(args.body)
+      require('snippy').expand_snippet(args.body)
     end,
   },
   window = {
@@ -182,7 +182,6 @@ cmp.setup({
       vim_item.menu = ({
         buffer = '[Buffer]',
         nvim_lsp = '[LSP]',
-        luasnip = '[LuaSnip]',
         nvim_lua = '[Lua]',
         latex_symbols = '[LaTeX]',
       })[entry.source.name]
