@@ -72,6 +72,9 @@ require('lazy').setup({
   -- Edit terminal
   'chomosuke/term-edit.nvim',
 
+  -- AI integration
+  'Exafunction/codeium.vim',
+
   -- LSP and code related things
   'echasnovski/mini.splitjoin', -- Spread lines
   'nvimtools/none-ls.nvim', -- Linting
