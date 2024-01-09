@@ -22,7 +22,10 @@ local find_files = function()
       '!.git',
       '--iglob',
       '!node_modules',
+      '--iglob',
+      '!dist',
       '--hidden',
+      '--no-ignore',
     },
   })
 end
@@ -34,7 +37,10 @@ local live_grep = function()
       '!.git',
       '--iglob',
       '!node_modules',
+      '--iglob',
+      '!node_modules',
       '--hidden',
+      '--no-ignore',
     },
   })
 end
