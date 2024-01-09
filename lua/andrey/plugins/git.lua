@@ -1,5 +1,7 @@
-local toggle_fugitive = function ()
-  if (vim.bo.filetype == 'fugitive') then
+require('gitsigns').setup()
+
+local toggle_fugitive = function()
+  if vim.bo.filetype == 'fugitive' then
     vim.cmd('quit')
     return
   end
