@@ -39,6 +39,8 @@ local live_grep = function()
       '!node_modules',
       '--iglob',
       '!node_modules',
+      '--iglob',
+      '!dist',
       '--hidden',
       '--no-ignore',
     },
