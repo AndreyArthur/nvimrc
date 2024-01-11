@@ -47,3 +47,12 @@ vim.keymap.set(
   ':Neotree toggle<cr>',
   { noremap = true, silent = true }
 )
+
+require('nvim-web-devicons').set_icon({
+  toml = {
+    icon = '',
+    color = '#61afef',
+    cterm_color = '67',
+    name = 'TOML',
+  },
+})
