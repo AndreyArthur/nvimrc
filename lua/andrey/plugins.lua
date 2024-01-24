@@ -60,15 +60,6 @@ require('lazy').setup({
     },
   },
 
-  -- Debugger
-  {
-    'mfussenegger/nvim-dap',
-    dependencies = {
-      'rcarriga/nvim-dap-ui',
-      'jay-babu/mason-nvim-dap.nvim',
-    },
-  },
-
   -- Edit terminal
   'chomosuke/term-edit.nvim',
 
