@@ -55,6 +55,8 @@ keymap('n', '<leader>E', ":let @-=expand('%:p:h')<cr> :e <c-r>-/", {
   silent = false,
 })
 
+keymap('n', '<leader>e', ':Explore<cr>', opts)
+
 -- Insert --
 
 -- hjkl navigation in insert mode

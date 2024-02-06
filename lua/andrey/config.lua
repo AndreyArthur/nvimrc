@@ -53,20 +53,4 @@ vim.cmd('au BufRead,BufNewFile *.md setlocal wrap')
 -- Set ejs files to html
 vim.cmd('au BufRead,BufNewFile *.ejs set filetype=html')
 
--- Define vim signs
-vim.fn.sign_define('DiagnosticSignError', {
-  text = ' ',
-  texthl = 'DiagnosticSignError',
-})
-vim.fn.sign_define('DiagnosticSignWarn', {
-  text = ' ',
-  texthl = 'DiagnosticSignWarn',
-})
-vim.fn.sign_define('DiagnosticSignInfo', {
-  text = ' ',
-  texthl = 'DiagnosticSignInfo',
-})
-vim.fn.sign_define('DiagnosticSignHint', {
-  text = '󰌵',
-  texthl = 'DiagnosticSignHint',
-})
+vim.g.netrw_banner = 0
