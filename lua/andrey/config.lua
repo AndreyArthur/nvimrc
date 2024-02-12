@@ -52,5 +52,3 @@ vim.cmd('au BufRead,BufNewFile *.md setlocal wrap')
 
 -- Set ejs files to html
 vim.cmd('au BufRead,BufNewFile *.ejs set filetype=html')
-
-vim.g.netrw_banner = 0
