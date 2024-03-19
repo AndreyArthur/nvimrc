@@ -10,6 +10,7 @@ require('nvim-treesitter.configs').setup({
     'typescript',
     'vimdoc',
     'vim',
+    'elixir',
   },
   auto_install = false,
   highlight = { enable = true },
