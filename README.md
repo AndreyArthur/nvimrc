@@ -4,12 +4,9 @@ This config was written from scratch by myself, it provides lsp support, complet
 
 ## Plugins that I use
 
-- `Packer` - The plugin manager itself.
-- `NvimTree` - File tree.
+- `Lazy` - The plugin manager itself.
 - `Fugitive && GitSigns` - Provides git integration.
 - `Telescope` - Provides live grep, fuzzy finding, buffers navigation, etc.
-- `LspZero` - Provides full lsp support.
-- `AutoPairs` - Auto... Pairs... 🧐
 - `LuaLine` - Fancy info lines.
 - `Treesitter` - Provides awesome syntax highlighting.
 
