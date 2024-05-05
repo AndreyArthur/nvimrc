@@ -42,6 +42,7 @@ require('lazy').setup({
     dependencies = {
       { 'nvim-lua/plenary.nvim' },
       { 'BurntSushi/ripgrep' },
+      { 'nvim-telescope/telescope-file-browser.nvim' },
     },
   },
 
