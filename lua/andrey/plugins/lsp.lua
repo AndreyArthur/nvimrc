@@ -100,7 +100,12 @@ end
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-  ensure_installed = {},
+  ensure_installed = {
+    'clangd',
+    'lua_ls',
+    'tsserver',
+    'zls',
+  },
   handlers = {
     default_setup,
     lua_ls = function()
@@ -116,6 +121,8 @@ require('mason-lspconfig').setup({
     end,
   },
 })
+
+vim.g.zig_fmt_parse_errors = 0
 
 local kind_icons = {
   Text = ' ',
@@ -145,6 +152,8 @@ local kind_icons = {
   TypeParameter = '󰅲 ',
 }
 
+require('snippy').setup({})
+
 cmp.setup({
   sources = {
     { name = 'nvim_lsp' },
@@ -169,7 +178,8 @@ cmp.setup({
   }),
   snippet = {
     expand = function(args)
-      require('snippy').expand_snippet(args.body)
+      local name = args.body:match('(.+)%(')
+      require('snippy').expand_snippet(name)
     end,
   },
   window = {
