@@ -21,6 +21,7 @@ require('lazy').setup({
   },
 
   --Themes
+  'vague2k/huez.nvim', -- Theme picker
   'folke/tokyonight.nvim', -- TokyoNight theme
 
   -- Treesitter
