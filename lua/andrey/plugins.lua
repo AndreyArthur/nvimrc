@@ -22,7 +22,16 @@ require('lazy').setup({
 
   --Themes
   'vague2k/huez.nvim', -- Theme picker
-  'folke/tokyonight.nvim', -- TokyoNight theme
+  'folke/tokyonight.nvim', -- Tokyonight theme
+  'rebelot/kanagawa.nvim', -- Kanagawa theme
+  {
+    'navarasu/onedark.nvim',
+    config = function()
+      require('onedark').setup({
+        style = 'warmer',
+      })
+    end,
+  }, -- One Dark theme
 
   -- Treesitter
   {
