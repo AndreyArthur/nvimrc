@@ -46,11 +46,11 @@ vim.lsp.handlers['textDocument/hover'] =
 vim.lsp.handlers['textDocument/signatureHelp'] =
   vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' })
 
-lsp_defaults.capabilities = vim.tbl_deep_extend(
-  'force',
-  lsp_defaults.capabilities,
-  require('cmp_nvim_lsp').default_capabilities()
-)
+local cmp_capabilities = require('cmp_nvim_lsp').default_capabilities()
+cmp_capabilities.textDocument.completion.completionItem.snippetSupport = false
+
+lsp_defaults.capabilities =
+  vim.tbl_deep_extend('force', lsp_defaults.capabilities, cmp_capabilities)
 
 vim.api.nvim_create_autocmd('LspAttach', {
   desc = 'LSP actions',
@@ -178,8 +178,7 @@ cmp.setup({
   }),
   snippet = {
     expand = function(args)
-      local name = args.body:match('(.+)%(')
-      require('snippy').expand_snippet(name)
+      require('snippy').expand_snippet(args.body)
     end,
   },
   window = {
