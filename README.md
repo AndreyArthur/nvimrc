@@ -1,14 +1,20 @@
-## My Personal Neovim Configuration
+## Neovim Configuration
 
-This config was written from scratch by myself, it provides lsp support, completion, a fantastic syntax highlighting, file tree, fuzzy finding, git integration and the most important, a fancy appearance for neovim.
+Personal neovim configuration, written from scratch.
 
-## Plugins that I use
+### Features it has
 
-- `Lazy` - The plugin manager itself.
-- `Fugitive && GitSigns` - Provides git integration.
-- `Telescope` - Provides live grep, fuzzy finding, buffers navigation, etc.
-- `LuaLine` - Fancy info lines.
-- `Treesitter` - Provides awesome syntax highlighting.
+- File browser, fuzzy finding and live grep.
+- Syntax highlighting.
+- Diagnostics, completion and linting.
+- Git integration.
+- AI integration.
+
+### Features it hasn't
+
+- File Tree. Use netrw or telescope file browser.
+- Autopairs. Don't you know how to type?
+- Snippets. Because they're annoying.
 
 ## Screenshot
 
