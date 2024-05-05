@@ -11,6 +11,7 @@ require('nvim-treesitter.configs').setup({
     'vimdoc',
     'vim',
     'elixir',
+    'zig',
   },
   auto_install = false,
   highlight = { enable = true },
