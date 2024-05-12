@@ -119,6 +119,16 @@ require('mason-lspconfig').setup({
         },
       })
     end,
+    eslint = function()
+      lspconfig.eslint.setup({
+        settings = {
+          codeActionOnSave = {
+            enable = true,
+            mode = 'all',
+          },
+        },
+      })
+    end,
   },
 })
 

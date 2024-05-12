@@ -1,0 +1,33 @@
+local none_ls = require('null-ls')
+
+none_ls.setup({
+  sources = {
+    none_ls.builtins.formatting.stylua,
+    none_ls.builtins.formatting.gofmt,
+    none_ls.builtins.formatting.clang_format,
+  },
+})
+
+local is_null_ls_active = function()
+  local clients = vim.lsp.get_active_clients()
+  for _, client in pairs(clients) do
+    if client.name == 'null-ls' then
+      return true
+    end
+  end
+  return false
+end
+
+vim.api.nvim_create_autocmd('BufWritePre', {
+  callback = function()
+    if is_null_ls_active() then
+      vim.lsp.buf.format()
+    end
+  end,
+})
+
+vim.api.nvim_create_autocmd('BufWritePre', {
+  pattern = { '*.tsx', '*.ts', '*.jsx', '*.js' },
+  command = 'silent! EslintFixAll',
+  group = vim.api.nvim_create_augroup('EslintFormat', {}),
+})

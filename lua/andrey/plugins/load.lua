@@ -1,6 +1,6 @@
 require('andrey.plugins.lsp')
 require('andrey.plugins.treesitter')
-require('andrey.plugins.null-ls')
+require('andrey.plugins.lint')
 require('andrey.plugins.telescope')
 require('andrey.plugins.netrw')
 require('andrey.plugins.ai')
