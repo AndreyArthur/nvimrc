@@ -1,3 +1,30 @@
+require('huez').setup({
+  omit = {
+    'onedark',
+    'default',
+    'desert',
+    'evening',
+    'industry',
+    'koehler',
+    'morning',
+    'murphy',
+    'pablo',
+    'peachpuff',
+    'ron',
+    'shine',
+    'slate',
+    'torte',
+    'zellner',
+    'blue',
+    'darkblue',
+    'delek',
+    'quiet',
+    'elflord',
+    'habamax',
+    'lunaperche',
+  },
+})
+
 local ensure_config_exists = function()
   local filepath = '~/.config/nvim/.nvim.huez.lua'
   local status = os.execute('cat ' .. filepath)

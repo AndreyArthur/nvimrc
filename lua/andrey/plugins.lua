@@ -24,14 +24,7 @@ require('lazy').setup({
   'vague2k/huez.nvim', -- Theme picker
   'folke/tokyonight.nvim', -- Tokyonight theme
   'rebelot/kanagawa.nvim', -- Kanagawa theme
-  {
-    'navarasu/onedark.nvim',
-    config = function()
-      require('onedark').setup({
-        style = 'warmer',
-      })
-    end,
-  }, -- One Dark theme
+  { 'otakutyrant/onedark.nvim', branch = 'multiple_colorschemes' }, -- Onedark theme
 
   -- Treesitter
   {
@@ -64,7 +57,12 @@ require('lazy').setup({
 
   -- LSP and code related things
   'echasnovski/mini.splitjoin', -- Spread lines
-  'nvimtools/none-ls.nvim', -- Linting
+  {
+    'nvimtools/none-ls.nvim',
+    dependencies = {
+      'nvimtools/none-ls-extras.nvim',
+    },
+  },
   {
     'neovim/nvim-lspconfig',
     dependencies = {
