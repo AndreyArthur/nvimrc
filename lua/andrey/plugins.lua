@@ -17,13 +17,29 @@ require('lazy').setup({
   -- Statusline and Tabline
   {
     'nvim-lualine/lualine.nvim', -- LuaLine
-    dependencies = { 'nvim-tree/nvim-web-devicons', lazy = true }, -- LuaLine icons
+    dependencies = { 'nvim-tree/nvim-web-devicons', lazy = true },
   },
 
   --Themes
   'vague2k/huez.nvim', -- Theme picker
   'folke/tokyonight.nvim', -- Tokyonight theme
-  'rebelot/kanagawa.nvim', -- Kanagawa theme
+  { 'catppuccin/nvim', name = 'catppuccin' },
+  {
+    'rebelot/kanagawa.nvim',
+    config = function()
+      require('kanagawa').setup({
+        colors = {
+          theme = {
+            all = {
+              ui = {
+                bg_gutter = 'none',
+              },
+            },
+          },
+        },
+      })
+    end,
+  }, -- Kanagawa theme
   { 'otakutyrant/onedark.nvim', branch = 'multiple_colorschemes' }, -- Onedark theme
 
   -- Treesitter
