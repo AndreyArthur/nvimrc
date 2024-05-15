@@ -12,7 +12,7 @@ Personal neovim configuration, written from scratch.
 
 ### Features it hasn't
 
-- File Tree. Use netrw or telescope file browser.
+- File Tree. Use telescope file browser.
 - Autopairs. Don't you know how to type?
 - Snippets. Because they're annoying.
 
