@@ -9,7 +9,7 @@ vim.diagnostic.config({
     prefix = '',
     format = function(diagnostic)
       if diagnostic.severity == vim.diagnostic.severity.WARN then
-        return string.format('  %s', diagnostic.message)
+        return string.format(' %s', diagnostic.message)
       elseif diagnostic.severity == vim.diagnostic.severity.ERROR then
         return string.format(' %s', diagnostic.message)
       elseif diagnostic.severity == vim.diagnostic.severity.INFO then
@@ -27,7 +27,7 @@ vim.diagnostic.config({
     source = true,
     format = function(diagnostic)
       if diagnostic.severity == vim.diagnostic.severity.WARN then
-        return string.format('  %s', diagnostic.message)
+        return string.format(' %s', diagnostic.message)
       elseif diagnostic.severity == vim.diagnostic.severity.ERROR then
         return string.format(' %s', diagnostic.message)
       elseif diagnostic.severity == vim.diagnostic.severity.INFO then
@@ -40,17 +40,29 @@ vim.diagnostic.config({
   },
 })
 
+local signs = {
+  Error = '',
+  Warning = '',
+  Hint = '󰌵',
+  Information = '',
+}
+
+for type, icon in pairs(signs) do
+  local hl = 'DiagnosticSign' .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = '' })
+end
+
 vim.lsp.handlers['textDocument/hover'] =
-  vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' })
+    vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' })
 
 vim.lsp.handlers['textDocument/signatureHelp'] =
-  vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' })
+    vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' })
 
 local cmp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 cmp_capabilities.textDocument.completion.completionItem.snippetSupport = false
 
 lsp_defaults.capabilities =
-  vim.tbl_deep_extend('force', lsp_defaults.capabilities, cmp_capabilities)
+    vim.tbl_deep_extend('force', lsp_defaults.capabilities, cmp_capabilities)
 
 vim.api.nvim_create_autocmd('LspAttach', {
   desc = 'LSP actions',
@@ -197,7 +209,7 @@ cmp.setup({
   formatting = {
     format = function(entry, vim_item)
       vim_item.kind =
-        string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind)
+          string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind)
       vim_item.menu = ({
         buffer = '[Buffer]',
         nvim_lsp = '[LSP]',
