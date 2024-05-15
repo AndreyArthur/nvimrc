@@ -1,9 +1,7 @@
+local telescope = require('telescope')
 local telescope_builtin = require('telescope.builtin')
 
-pcall(require('telescope').load_extension, 'fzf')
-pcall(require('telescope').load_extension, 'file_browser')
-
-require('telescope').setup({
+telescope.setup({
   defaults = {
     mappings = {
       i = {
@@ -12,19 +10,37 @@ require('telescope').setup({
       },
     },
   },
+  pickers = {
+    find_files = {
+      theme = 'ivy',
+    },
+    live_grep = {
+      theme = 'ivy',
+    },
+    buffers = {
+      theme = 'ivy',
+    },
+  },
   extensions = {
     file_browser = {
       theme = 'ivy',
+      cwd_to_path = true,
       hijack_netrw = true,
       no_ignore = true,
       hidden = true,
+      grouped = true,
       mappings = {
-        ['i'] = {},
+        ['i'] = {
+          ['<bs>'] = false,
+        },
         ['n'] = {},
       },
     },
   },
 })
+
+pcall(telescope.load_extension, 'fzf')
+pcall(telescope.load_extension, 'file_browser')
 
 local ripgrep = {
   'rg',
@@ -77,6 +93,11 @@ end
 vim.keymap.set('n', '<leader>ff', find_files, {})
 vim.keymap.set('n', '<leader>fg', live_grep, {})
 vim.keymap.set('n', '<leader>fb', telescope_builtin.buffers, {})
-vim.keymap.set('n', '<leader>ft', function()
-  require('telescope').extensions.file_browser.file_browser()
+vim.keymap.set('n', '<leader>fe', function()
+  telescope.extensions.file_browser.file_browser()
+  vim.api.nvim_feedkeys(
+    vim.api.nvim_replace_termcodes('<esc>', true, true, true),
+    'n',
+    true
+  )
 end)
