@@ -84,7 +84,10 @@ require('lazy').setup({
     dependencies = {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
-      'hrsh7th/nvim-cmp',
+      {
+        'hrsh7th/nvim-cmp',
+        commit = 'b356f2c',
+      },
       'hrsh7th/cmp-cmdline',
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-buffer',
