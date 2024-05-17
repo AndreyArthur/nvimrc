@@ -23,6 +23,8 @@ require('huez').setup({
     'habamax',
     'lunaperche',
   },
+  picker = 'telescope',
+  picker_opts = require('telescope.themes').get_ivy({}),
 })
 
 local ensure_config_exists = function()
