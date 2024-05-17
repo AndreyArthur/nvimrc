@@ -23,6 +23,7 @@ telescope.setup({
   },
   extensions = {
     file_browser = {
+      initial_mode = 'normal',
       theme = 'ivy',
       cwd_to_path = true,
       hijack_netrw = true,
@@ -94,10 +95,5 @@ vim.keymap.set('n', '<leader>ff', find_files, {})
 vim.keymap.set('n', '<leader>fg', live_grep, {})
 vim.keymap.set('n', '<leader>fb', telescope_builtin.buffers, {})
 vim.keymap.set('n', '<leader>fe', function()
-  telescope.extensions.file_browser.file_browser()
-  vim.api.nvim_feedkeys(
-    vim.api.nvim_replace_termcodes('<esc>', true, true, true),
-    'n',
-    true
-  )
+  telescope.extensions.file_browser.file_browser({ path = '%:p:h' })
 end)
