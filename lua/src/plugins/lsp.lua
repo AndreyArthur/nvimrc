@@ -53,16 +53,16 @@ for type, icon in pairs(signs) do
 end
 
 vim.lsp.handlers['textDocument/hover'] =
-    vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' })
+  vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' })
 
 vim.lsp.handlers['textDocument/signatureHelp'] =
-    vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' })
+  vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' })
 
 local cmp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 cmp_capabilities.textDocument.completion.completionItem.snippetSupport = false
 
 lsp_defaults.capabilities =
-    vim.tbl_deep_extend('force', lsp_defaults.capabilities, cmp_capabilities)
+  vim.tbl_deep_extend('force', lsp_defaults.capabilities, cmp_capabilities)
 
 vim.api.nvim_create_autocmd('LspAttach', {
   desc = 'LSP actions',
@@ -106,9 +106,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
-local default_setup = function(server)
-  lspconfig[server].setup({})
-end
+local default_setup = function(server) lspconfig[server].setup({}) end
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
@@ -199,9 +197,7 @@ cmp.setup({
     }),
   }),
   snippet = {
-    expand = function(args)
-      require('snippy').expand_snippet(args.body)
-    end,
+    expand = function(args) require('snippy').expand_snippet(args.body) end,
   },
   window = {
     documentation = cmp.config.window.bordered(),
@@ -209,7 +205,7 @@ cmp.setup({
   formatting = {
     format = function(entry, vim_item)
       vim_item.kind =
-          string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind)
+        string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind)
       vim_item.menu = ({
         buffer = '[Buffer]',
         nvim_lsp = '[LSP]',

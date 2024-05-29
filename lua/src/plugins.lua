@@ -21,9 +21,9 @@ require('lazy').setup({
   },
 
   --Themes
-  'vague2k/huez.nvim',     -- Theme picker
+  'vague2k/huez.nvim', -- Theme picker
   'folke/tokyonight.nvim', -- Tokyonight theme
-  { 'catppuccin/nvim',          name = 'catppuccin' },
+  { 'catppuccin/nvim', name = 'catppuccin' },
   'projekt0n/github-nvim-theme',
   {
     'rebelot/kanagawa.nvim',
@@ -40,7 +40,7 @@ require('lazy').setup({
         },
       })
     end,
-  },                                                                -- Kanagawa theme
+  }, -- Kanagawa theme
   { 'otakutyrant/onedark.nvim', branch = 'multiple_colorschemes' }, -- Onedark theme
 
   -- Treesitter
@@ -54,7 +54,7 @@ require('lazy').setup({
   'lukas-reineke/indent-blankline.nvim',
 
   -- Git integration
-  'tpope/vim-fugitive',      -- Fugitive
+  'tpope/vim-fugitive', -- Fugitive
   'lewis6991/gitsigns.nvim', -- Git Signs
 
   -- Fuzzy find, Grep...
@@ -68,9 +68,9 @@ require('lazy').setup({
     },
   },
   {
-    "ThePrimeagen/harpoon",
-    branch = "harpoon2",
-    dependencies = { "nvim-lua/plenary.nvim" }
+    'ThePrimeagen/harpoon',
+    branch = 'harpoon2',
+    dependencies = { 'nvim-lua/plenary.nvim' },
   },
 
   -- Edit terminal

@@ -3,9 +3,7 @@ if not status_ok then
   return
 end
 
-local hide_in_width = function()
-  return vim.fn.winwidth(0) > 80
-end
+local hide_in_width = function() return vim.fn.winwidth(0) > 80 end
 
 local diagnostics = {
   'diagnostics',
@@ -52,9 +50,7 @@ local branch = {
 
 local location = {
   'location',
-  fmt = function(str)
-    return str .. ' '
-  end,
+  fmt = function(str) return str .. ' ' end,
   padding = 0,
 }
 
