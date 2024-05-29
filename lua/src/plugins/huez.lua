@@ -30,7 +30,7 @@ require('huez').setup({
     'catppuccin-macchiato',
     'catppuccin-mocha',
     'github_dark',
-    'github_dimmed',
+    'github_dark_dimmed',
     'github_light',
     'kanagawa-dragon',
     'kanagawa-lotus',
