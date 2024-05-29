@@ -8,4 +8,4 @@ local toggle_fugitive = function()
   vim.cmd('Git')
 end
 
-vim.keymap.set('n', '<leader>g', toggle_fugitive, { noremap = true })
+vim.keymap.set('n', '<leader>gg', toggle_fugitive, { noremap = true })
