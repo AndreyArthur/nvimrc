@@ -1,5 +1,6 @@
 require('src.plugins.lsp')
 require('src.plugins.treesitter')
+require('src.plugins.indent-blankline')
 require('src.plugins.lint')
 require('src.plugins.telescope')
 require('src.plugins.ai')

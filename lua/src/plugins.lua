@@ -24,6 +24,7 @@ require('lazy').setup({
   'vague2k/huez.nvim', -- Theme picker
   'folke/tokyonight.nvim', -- Tokyonight theme
   { 'catppuccin/nvim', name = 'catppuccin' },
+  'projekt0n/github-nvim-theme',
   {
     'rebelot/kanagawa.nvim',
     config = function()
@@ -50,6 +51,7 @@ require('lazy').setup({
     },
     build = ':TSUpdate',
   },
+  'lukas-reineke/indent-blankline.nvim',
 
   -- Git integration
   'tpope/vim-fugitive', -- Fugitive
@@ -62,6 +64,7 @@ require('lazy').setup({
       { 'nvim-lua/plenary.nvim' },
       { 'BurntSushi/ripgrep' },
       { 'nvim-telescope/telescope-file-browser.nvim' },
+      'andrew-george/telescope-themes',
     },
   },
 
