@@ -2,29 +2,18 @@ local telescope = require('telescope')
 local telescope_builtin = require('telescope.builtin')
 
 telescope.setup({
-  defaults = {
+  defaults = require('telescope.themes').get_ivy({
     mappings = {
       i = {
         ['<c-j>'] = require('telescope.actions').move_selection_next,
         ['<c-k>'] = require('telescope.actions').move_selection_previous,
       },
     },
-  },
-  pickers = {
-    find_files = {
-      theme = 'ivy',
-    },
-    live_grep = {
-      theme = 'ivy',
-    },
-    buffers = {
-      theme = 'ivy',
-    },
-  },
+  }),
+  pickers = {},
   extensions = {
     file_browser = {
       initial_mode = 'normal',
-      theme = 'ivy',
       cwd_to_path = true,
       hijack_netrw = true,
       no_ignore = true,
@@ -94,6 +83,8 @@ end
 vim.keymap.set('n', '<leader>ff', find_files, {})
 vim.keymap.set('n', '<leader>fg', live_grep, {})
 vim.keymap.set('n', '<leader>fb', telescope_builtin.buffers, {})
-vim.keymap.set('n', '<leader>fe', function()
-  telescope.extensions.file_browser.file_browser({ path = '%:p:h' })
-end)
+vim.keymap.set(
+  'n',
+  '<leader>fe',
+  function() telescope.extensions.file_browser.file_browser({ path = '%:p:h' }) end
+)
