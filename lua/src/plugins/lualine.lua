@@ -113,7 +113,7 @@ lualine.setup({
     lualine_c = {},
     lualine_x = {},
     lualine_y = { { 'buffers', max_length = vim.o.columns / 4 } },
-    lualine_z = { 'hostname', 'tabs' },
+    lualine_z = { 'hostname', { 'tabs', use_mode_colors = true } },
   },
   extensions = { 'nvim-tree' },
 })
