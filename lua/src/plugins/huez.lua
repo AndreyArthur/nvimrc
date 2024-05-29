@@ -1,28 +1,52 @@
+local filter_out = function(complete_table, filter)
+  local has_value = function(tbl, value)
+    for _, v in ipairs(tbl) do
+      if v == value then
+        return true
+      end
+    end
+    return false
+  end
+
+  local new_table = {}
+  local index = 1
+
+  for _, v in ipairs(complete_table) do
+    if not has_value(filter, v) then
+      new_table[index] = v
+      index = index + 1
+    end
+  end
+
+  return new_table
+end
+
+local colorschemes = vim.fn.getcompletion('', 'color')
+
 require('huez').setup({
-  omit = {
-    'onedark',
-    'default',
-    'desert',
-    'evening',
-    'industry',
-    'koehler',
-    'morning',
-    'murphy',
-    'pablo',
-    'peachpuff',
-    'ron',
-    'shine',
-    'slate',
-    'torte',
-    'zellner',
-    'blue',
-    'darkblue',
-    'delek',
-    'quiet',
-    'elflord',
-    'habamax',
-    'lunaperche',
-  },
+  omit = filter_out(colorschemes, {
+    'catppuccin-frappe',
+    'catppuccin-latte',
+    'catppuccin-macchiato',
+    'catppuccin-mocha',
+    'github_dark',
+    'github_dimmed',
+    'github_light',
+    'kanagawa-dragon',
+    'kanagawa-lotus',
+    'kanagawa-wave',
+    'onedark-cool',
+    'onedark-dark',
+    'onedark-darker',
+    'onedark-deep',
+    'onedark-light',
+    'onedark-warm',
+    'onedark-warmer',
+    'tokyonight-day',
+    'tokyonight-moon',
+    'tokyonight-night',
+    'tokyonight-storm',
+  }),
   picker = 'telescope',
   picker_opts = require('telescope.themes').get_ivy({}),
 })
