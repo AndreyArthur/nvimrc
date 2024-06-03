@@ -24,23 +24,6 @@ require('lazy').setup({
   'vague2k/huez.nvim', -- Theme picker
   'folke/tokyonight.nvim', -- Tokyonight theme
   { 'catppuccin/nvim', name = 'catppuccin' },
-  'projekt0n/github-nvim-theme',
-  {
-    'rebelot/kanagawa.nvim',
-    config = function()
-      require('kanagawa').setup({
-        colors = {
-          theme = {
-            all = {
-              ui = {
-                bg_gutter = 'none',
-              },
-            },
-          },
-        },
-      })
-    end,
-  }, -- Kanagawa theme
   { 'otakutyrant/onedark.nvim', branch = 'multiple_colorschemes' }, -- Onedark theme
 
   -- Treesitter
