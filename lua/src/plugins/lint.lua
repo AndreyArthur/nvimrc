@@ -21,7 +21,9 @@ end
 vim.api.nvim_create_autocmd('BufWritePre', {
   callback = function()
     if is_null_ls_active() then
-      vim.lsp.buf.format()
+      vim.lsp.buf.format({
+        filter = function(client) return client.name == 'null-ls' end,
+      })
     end
   end,
 })
