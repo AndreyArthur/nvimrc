@@ -82,6 +82,58 @@ local identation = function()
   return 'identation: ' .. vim.api.nvim_buf_get_option(0, 'shiftwidth')
 end
 
+local buffers = {
+  'buffers',
+  buffers_color = {
+    active = function()
+      local mode_names = {
+        n = 'lualine_b_normal',
+        i = 'lualine_b_insert',
+        v = 'lualine_b_visual',
+        V = 'lualine_b_visual',
+        R = 'lualine_b_replace',
+      }
+      local nvim_mode = vim.api.nvim_get_mode().mode
+      return mode_names[nvim_mode]
+    end,
+  },
+  max_length = vim.o.columns / 4,
+}
+
+local tabs = {
+  'tabs',
+  symbols = {
+    modified = ' ●',
+  },
+  use_mode_colors = true,
+}
+
+local filename = {
+  'filename',
+  symbols = {
+    modified = '●',
+    readonly = '!',
+    newfile = '+',
+    unnamed = '~',
+  },
+}
+
+local hostname = {
+  'hostname',
+  separator = '',
+  fmt = function(str)
+    local separator = ''
+    if vim.fn.tabpagenr() == 1 then
+      separator = ' '
+    else
+      separator = ' '
+    end
+
+    return ' ' .. str .. separator
+  end,
+  padding = 0,
+}
+
 lualine.setup({
   options = {
     icons_enabled = true,
@@ -97,14 +149,14 @@ lualine.setup({
     lualine_c = {},
     lualine_x = {},
     lualine_y = { diff, identation, 'filesize', 'selectioncount' },
-    lualine_z = { 'filename', location, progress },
+    lualine_z = { filename, location, progress },
   },
   inactive_sections = {
     lualine_a = { branch, diagnostics },
     lualine_b = { mode },
     lualine_c = {},
     lualine_x = {},
-    lualine_y = { 'encoding', 'filename', filetype },
+    lualine_y = { 'encoding', filename, filetype },
     lualine_z = { location },
   },
   tabline = {
@@ -112,7 +164,7 @@ lualine.setup({
     lualine_b = { 'branch', 'fileformat' },
     lualine_c = {},
     lualine_x = {},
-    lualine_y = { { 'buffers', max_length = vim.o.columns / 4 } },
-    lualine_z = { 'hostname', { 'tabs', use_mode_colors = true } },
+    lualine_y = { buffers },
+    lualine_z = { hostname, tabs },
   },
 })
