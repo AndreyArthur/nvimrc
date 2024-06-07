@@ -21,10 +21,9 @@ require('lazy').setup({
   },
 
   --Themes
-  'vague2k/huez.nvim', -- Theme picker
   'folke/tokyonight.nvim', -- Tokyonight theme
   { 'catppuccin/nvim', name = 'catppuccin' },
-  { 'otakutyrant/onedark.nvim', branch = 'multiple_colorschemes' }, -- Onedark theme
+  'olimorris/onedarkpro.nvim', -- One dark pro theme
 
   -- Treesitter
   {
