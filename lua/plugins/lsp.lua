@@ -1,56 +1,6 @@
 local lspconfig = require('lspconfig')
 local lsp_defaults = lspconfig.util.default_config
-local cmp = require('cmp')
-
--- Vim diagnostics and floating windows configuration
-vim.diagnostic.config({
-  virtual_text = {
-    source = false,
-    prefix = '',
-    format = function(diagnostic)
-      if diagnostic.severity == vim.diagnostic.severity.WARN then
-        return string.format(' %s', diagnostic.message)
-      elseif diagnostic.severity == vim.diagnostic.severity.ERROR then
-        return string.format(' %s', diagnostic.message)
-      elseif diagnostic.severity == vim.diagnostic.severity.INFO then
-        return string.format(' %s', diagnostic.message)
-      elseif diagnostic.severity == vim.diagnostic.severity.HINT then
-        return string.format('󰌵 %s', diagnostic.message)
-      end
-      return diagnostic.message
-    end,
-  },
-  float = {
-    border = 'rounded',
-    header = '',
-    prefix = '',
-    source = true,
-    format = function(diagnostic)
-      if diagnostic.severity == vim.diagnostic.severity.WARN then
-        return string.format(' %s', diagnostic.message)
-      elseif diagnostic.severity == vim.diagnostic.severity.ERROR then
-        return string.format(' %s', diagnostic.message)
-      elseif diagnostic.severity == vim.diagnostic.severity.INFO then
-        return string.format(' %s', diagnostic.message)
-      elseif diagnostic.severity == vim.diagnostic.severity.HINT then
-        return string.format('󰌵 %s', diagnostic.message)
-      end
-      return diagnostic.message
-    end,
-  },
-})
-
-local signs = {
-  Error = '',
-  Warning = '',
-  Hint = '󰌵',
-  Information = '',
-}
-
-for type, icon in pairs(signs) do
-  local hl = 'DiagnosticSign' .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = '' })
-end
+local completion_capabilities = require('plugins.completion')
 
 vim.lsp.handlers['textDocument/hover'] =
   vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' })
@@ -58,11 +8,11 @@ vim.lsp.handlers['textDocument/hover'] =
 vim.lsp.handlers['textDocument/signatureHelp'] =
   vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' })
 
-local cmp_capabilities = require('cmp_nvim_lsp').default_capabilities()
-cmp_capabilities.textDocument.completion.completionItem.snippetSupport = false
-
-lsp_defaults.capabilities =
-  vim.tbl_deep_extend('force', lsp_defaults.capabilities, cmp_capabilities)
+lsp_defaults.capabilities = vim.tbl_deep_extend(
+  'force',
+  lsp_defaults.capabilities,
+  completion_capabilities
+)
 
 vim.api.nvim_create_autocmd('LspAttach', {
   desc = 'LSP actions',
@@ -149,76 +99,3 @@ require('mason-lspconfig').setup({
 })
 
 vim.g.zig_fmt_parse_errors = 0
-
-local kind_icons = {
-  Text = ' ',
-  Method = '󰆧 ',
-  Function = '󰘧 ',
-  Constructor = ' ',
-  Field = '󰇽 ',
-  Variable = '󰂡 ',
-  Class = '󰠱 ',
-  Interface = ' ',
-  Module = ' ',
-  Property = '󰜢 ',
-  Unit = ' ',
-  Value = '󰎠 ',
-  Enum = ' ',
-  Keyword = '󰌋 ',
-  Snippet = ' ',
-  Color = '󰏘 ',
-  File = '󰈙 ',
-  Reference = ' ',
-  Folder = '󰉋 ',
-  EnumMember = ' ',
-  Constant = '󰏿 ',
-  Struct = ' ',
-  Event = ' ',
-  Operator = '󰆕 ',
-  TypeParameter = '󰅲 ',
-}
-
-require('snippy').setup({})
-
-cmp.setup({
-  sources = {
-    { name = 'nvim_lsp' },
-    { name = 'buffer' },
-    { name = 'path' },
-  },
-  mapping = cmp.mapping.preset.insert({
-    ['<c-k>'] = cmp.mapping.select_prev_item(),
-    ['<c-j>'] = cmp.mapping.select_next_item(),
-    ['<c-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-1), { 'i', 'c' }),
-    ['<c-f>'] = cmp.mapping(cmp.mapping.scroll_docs(1), { 'i', 'c' }),
-    ['<c-space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-    ['<c-y>'] = cmp.config.disable,
-    ['<c-e>'] = cmp.mapping({
-      i = cmp.mapping.abort(),
-      c = cmp.mapping.close(),
-    }),
-    ['<tab>'] = cmp.mapping.confirm({
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
-    }),
-  }),
-  snippet = {
-    expand = function(args) require('snippy').expand_snippet(args.body) end,
-  },
-  window = {
-    documentation = cmp.config.window.bordered(),
-  },
-  formatting = {
-    format = function(entry, vim_item)
-      vim_item.kind =
-        string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind)
-      vim_item.menu = ({
-        buffer = '[Buffer]',
-        nvim_lsp = '[LSP]',
-        nvim_lua = '[Lua]',
-        latex_symbols = '[LaTeX]',
-      })[entry.source.name]
-      return vim_item
-    end,
-  },
-})

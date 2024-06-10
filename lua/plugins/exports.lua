@@ -1,4 +1,6 @@
 require('plugins.lsp')
+require('plugins.diagnostics')
+require('plugins.completion')
 require('plugins.treesitter')
 require('plugins.telescope')
 require('plugins.lint')
