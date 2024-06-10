@@ -54,7 +54,7 @@ telescope.setup({
       enable_previewer = false,
       persist = {
         enabled = true,
-        path = vim.fn.stdpath('config') .. '/lua/src/colorscheme.lua',
+        path = vim.fn.stdpath('config') .. '/lua/colorscheme.lua',
       },
     },
     file_browser = {
