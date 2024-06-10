@@ -32,6 +32,8 @@ local options = {
   background = 'dark', -- just for some especific themes
 }
 
+vim.wo.fillchars = 'eob: '
+
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
