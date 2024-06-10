@@ -152,12 +152,12 @@ lualine.setup({
     lualine_z = { filename, location, progress },
   },
   inactive_sections = {
-    lualine_a = { branch, diagnostics },
-    lualine_b = { mode },
+    lualine_a = {},
+    lualine_b = { diagnostics, mode },
     lualine_c = {},
     lualine_x = {},
-    lualine_y = { 'encoding', filename, filetype },
-    lualine_z = { location },
+    lualine_y = { diff, filename, location },
+    lualine_z = {},
   },
   tabline = {
     lualine_a = { filetype, 'encoding' },
