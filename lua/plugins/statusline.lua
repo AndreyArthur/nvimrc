@@ -78,8 +78,8 @@ local progress = function()
   return chars[index]
 end
 
-local identation = function()
-  return 'identation: ' .. vim.api.nvim_buf_get_option(0, 'shiftwidth')
+local indentation = function()
+  return 'indent: ' .. vim.api.nvim_buf_get_option(0, 'shiftwidth')
 end
 
 local buffers = {
@@ -148,7 +148,7 @@ lualine.setup({
     lualine_b = { mode },
     lualine_c = {},
     lualine_x = {},
-    lualine_y = { diff, identation, 'filesize', 'selectioncount' },
+    lualine_y = { diff, indentation, 'filesize', 'selectioncount' },
     lualine_z = { filename, location, progress },
   },
   inactive_sections = {
