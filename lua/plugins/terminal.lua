@@ -1,3 +1,9 @@
+local term_edit = require('term-edit')
+
+term_edit.setup({
+  prompt_end = '%$ ',
+})
+
 function _G.setup_terminal()
   local opts = { noremap = true }
   vim.api.nvim_command('setlocal nonumber norelativenumber')
