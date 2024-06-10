@@ -5,6 +5,7 @@ none_ls.setup({
     none_ls.builtins.formatting.stylua,
     none_ls.builtins.formatting.gofmt,
     none_ls.builtins.formatting.clang_format,
+    none_ls.builtins.formatting.black,
   },
 })
 
