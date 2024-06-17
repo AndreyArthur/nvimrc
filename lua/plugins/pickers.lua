@@ -87,22 +87,28 @@ local ripgrep = {
   '--files',
 }
 
-local ignored = {
-  '--iglob',
-  '!.git',
-  '--iglob',
-  '!node_modules',
-  '--iglob',
-  '!dist',
-  '--iglob',
-  '!build',
-  '--iglob',
-  '!zig-out',
-  '--iglob',
-  '!zig-cache',
-  '--iglob',
-  '!target',
-}
+local ignore = function(table)
+  local ignored = {}
+  local i = 1
+  for _, v in ipairs(table) do
+    ignored[i] = '--iglob'
+    ignored[i + 1] = '!' .. v
+    i = i + 2
+  end
+  return ignored
+end
+
+local ignored = ignore({
+  '.git',
+  'node_modules',
+  'obj',
+  'bin',
+  'dist',
+  'build',
+  'zig-out',
+  'zig-cache',
+  'target',
+})
 
 local options = {
   '--hidden',
