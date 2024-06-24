@@ -18,10 +18,6 @@ vim.g.maplocalleader = ' '
 
 -- Normal --
 
--- Repeat last macro to pattern
-keymap('n', '<leader>,', 'N@@', opts)
-keymap('n', '<leader>.', 'n@@', opts)
-
 --  Use system clipboard
 keymap('n', '<leader>y', '"+y', opts)
 keymap('n', '<leader>p', '"+p', opts)
@@ -40,8 +36,8 @@ keymap('n', '<leader>tn', ':tabnew<cr>', opts)
 keymap('n', '<leader>tt', ':terminal<cr>', opts)
 
 -- Use virtual navigation
-keymap('n', 'k', 'gk', opts)
-keymap('n', 'j', 'gj', opts)
+keymap('n', '<c-k>', 'gk', opts)
+keymap('n', '<c-j>', 'gj', opts)
 
 -- Delete to void
 keymap('n', '<leader>d', '"_d', opts)
@@ -80,8 +76,8 @@ keymap('v', '<leader>d', '"_d', opts)
 keymap('v', '<c-j>', ":m '>+1<CR>gv=gv", opts)
 keymap('v', '<c-k>', ":m '<-2<CR>gv=gv", opts)
 
-keymap('v', 'k', 'gk', opts)
-keymap('v', 'j', 'gj', opts)
+keymap('v', '<c-k>', 'gk', opts)
+keymap('v', '<c-j>', 'gj', opts)
 
 -- Command --
 
