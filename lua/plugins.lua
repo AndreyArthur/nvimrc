@@ -23,7 +23,6 @@ require('lazy').setup({
   --Themes
   'folke/tokyonight.nvim', -- Tokyonight theme
   { 'catppuccin/nvim', name = 'catppuccin' },
-  'olimorris/onedarkpro.nvim', -- One dark pro theme
 
   -- Treesitter
   {
@@ -43,9 +42,9 @@ require('lazy').setup({
   {
     'nvim-telescope/telescope.nvim', -- Telescope
     dependencies = {
-      { 'nvim-lua/plenary.nvim' },
-      { 'BurntSushi/ripgrep' },
-      { 'nvim-telescope/telescope-file-browser.nvim' },
+      'nvim-lua/plenary.nvim',
+      'BurntSushi/ripgrep',
+      'nvim-telescope/telescope-file-browser.nvim',
       'andrew-george/telescope-themes',
     },
   },
@@ -74,10 +73,7 @@ require('lazy').setup({
     dependencies = {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
-      {
-        'hrsh7th/nvim-cmp',
-        commit = 'b356f2c',
-      },
+      'hrsh7th/nvim-cmp',
       'hrsh7th/cmp-cmdline',
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-buffer',
