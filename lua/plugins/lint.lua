@@ -36,3 +36,9 @@ vim.api.nvim_create_autocmd('BufWritePre', {
   command = 'silent! EslintFixAll',
   group = vim.api.nvim_create_augroup('EslintFormat', {}),
 })
+
+vim.api.nvim_create_autocmd('BufWritePre', {
+  pattern = { '*.rs' },
+  command = 'lua vim.lsp.buf.format()',
+  group = vim.api.nvim_create_augroup('RustAnalyzerFormat', {}),
+})
