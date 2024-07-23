@@ -21,8 +21,10 @@ require('lazy').setup({
   },
 
   --Themes
-  'folke/tokyonight.nvim', -- Tokyonight theme
+  'folke/tokyonight.nvim',
   { 'catppuccin/nvim', name = 'catppuccin' },
+  'EdenEast/nightfox.nvim',
+  'marko-cerovac/material.nvim',
 
   -- Treesitter
   {
@@ -73,7 +75,7 @@ require('lazy').setup({
     dependencies = {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
-      'hrsh7th/nvim-cmp',
+      { 'hrsh7th/nvim-cmp', commit = 'b356f2c' },
       'hrsh7th/cmp-cmdline',
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-buffer',
