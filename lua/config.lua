@@ -30,6 +30,7 @@ local options = {
   scrolloff = 4, -- minimal number of screen lines to keep above and below the cursor
   sidescrolloff = 4, -- minimal number of screen columns either side of cursor if wrap is `false`
   background = 'dark', -- just for some especific themes
+  dictionary = '/usr/share/dict/cracklib-small',
 }
 
 vim.wo.fillchars = 'eob: '
