@@ -35,6 +35,11 @@ require('lazy').setup({
     build = ':TSUpdate',
   },
   'lukas-reineke/indent-blankline.nvim',
+  {
+    'm4xshen/hardtime.nvim',
+    dependencies = { 'MunifTanjim/nui.nvim', 'nvim-lua/plenary.nvim' },
+    opts = {},
+  },
 
   -- Git integration
   'tpope/vim-fugitive', -- Fugitive
