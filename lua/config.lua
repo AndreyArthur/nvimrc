@@ -1,5 +1,6 @@
 local options = {
   backup = false, -- avoid vim backup files
+  termguicolors = true,
   completeopt = { 'menuone', 'noselect' }, -- mostly just for cmp
   conceallevel = 0, -- so that `` is visible in markdown files
   fileencoding = 'utf-8', -- the encoding written to a file
