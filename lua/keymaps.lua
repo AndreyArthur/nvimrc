@@ -20,6 +20,7 @@ vim.g.maplocalleader = ' '
 
 --  Use system clipboard
 keymap('n', '<leader>y', '"+y', opts)
+keymap('n', '<leader>Y', '"+Y', opts)
 keymap('n', '<leader>p', '"+p', opts)
 keymap('n', '<leader>P', '"+P', opts)
 
