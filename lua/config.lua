@@ -56,3 +56,9 @@ vim.cmd('au BufRead,BufNewFile *.md setlocal wrap')
 
 -- Set ejs files to html
 vim.cmd('au BufRead,BufNewFile *.ejs set filetype=html')
+
+-- Set .h files to c.
+vim.cmd('au BufRead,BufNewFile *.h set filetype=c')
+
+-- Set .ll files to llvm.
+vim.cmd('au BufRead,BufNewFile *.ll set filetype=llvm')
