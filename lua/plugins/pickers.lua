@@ -69,7 +69,10 @@ local file_browser_config = {
     ['i'] = {
       ['<bs>'] = false,
     },
-    ['n'] = {},
+    ['n'] = {
+      ['s'] = require('telescope.actions').select_horizontal,
+      ['v'] = require('telescope.actions').select_vertical,
+    },
   },
 }
 
@@ -113,6 +116,7 @@ local ignored = ignore({
   '.git',
   'node_modules',
   'obj',
+  'objects',
   'bin',
   'dist',
   'build',
