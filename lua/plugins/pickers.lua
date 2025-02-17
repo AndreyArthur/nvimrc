@@ -49,6 +49,17 @@ local themes_config = {
     'tokyonight-moon',
     'tokyonight-night',
     'tokyonight-storm',
+    'github_dark',
+    'github_dark_colorblind',
+    'github_dark_default',
+    'github_dark_dimmed',
+    'github_dark_high_contrast',
+    'github_dark_tritanopia',
+    'github_light',
+    'github_light_colorblind',
+    'github_light_default',
+    'github_light_high_contrast',
+    'github_light_tritanopia',
   }),
   enable_live_preview = true,
   enable_previewer = false,
@@ -160,6 +171,7 @@ vim.keymap.set(
   function() telescope.extensions.file_browser.file_browser({ path = '%:p:h' }) end
 )
 vim.keymap.set('n', '<leader>fc', '<cmd>Telescope themes<cr>', {})
+vim.keymap.set('n', '<leader>fl', telescope_builtin.resume, {})
 
 harpoon:setup()
 
