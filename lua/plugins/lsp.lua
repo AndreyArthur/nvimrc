@@ -62,38 +62,16 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
-local default_setup = function(server) lspconfig[server].setup({}) end
-
-require('mason').setup({})
-require('mason-lspconfig').setup({
-  ensure_installed = {
-    'clangd',
-    'lua_ls',
-  },
-  handlers = {
-    default_setup,
-    lua_ls = function()
-      lspconfig.lua_ls.setup({
-        settings = {
-          Lua = {
-            diagnostics = {
-              globals = { 'vim' },
-            },
-          },
-        },
-      })
-    end,
-    eslint = function()
-      lspconfig.eslint.setup({
-        settings = {
-          codeActionOnSave = {
-            enable = true,
-            mode = 'all',
-          },
-        },
-      })
-    end,
+lspconfig.lua_ls.setup({
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { 'vim' },
+      },
+    },
   },
 })
-
-vim.g.zig_fmt_parse_errors = 0
+lspconfig.ocamllsp.setup({})
+lspconfig.gopls.setup({})
+lspconfig.clangd.setup({})
+lspconfig.pyright.setup({})
