@@ -62,3 +62,6 @@ vim.cmd('au BufRead,BufNewFile *.h set filetype=c')
 
 -- Set .ll files to llvm.
 vim.cmd('au BufRead,BufNewFile *.ll set filetype=llvm')
+
+-- Set .env files to env.
+vim.cmd('au BufRead,BufNewFile .env.* set filetype=sh')
