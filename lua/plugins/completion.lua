@@ -1,81 +1,73 @@
-local cmp = require('cmp')
+local blink = require('blink.cmp')
 
-local cmp_capabilities = require('cmp_nvim_lsp').default_capabilities()
-cmp_capabilities.textDocument.completion.completionItem.snippetSupport = false
+local capabilities = blink.get_lsp_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = false
 
-local kind_icons = {
-  Text = ' ',
-  Method = '󰆧 ',
-  Function = '󰘧 ',
-  Constructor = ' ',
-  Field = '󰇽 ',
-  Variable = '󰂡 ',
-  Class = '󰠱 ',
-  Interface = ' ',
-  Module = ' ',
-  Property = '󰜢 ',
-  Unit = ' ',
-  Value = '󰎠 ',
-  Enum = ' ',
-  Keyword = '󰌋 ',
-  Snippet = ' ',
-  Color = '󰏘 ',
-  File = '󰈙 ',
-  Reference = ' ',
-  Folder = '󰉋 ',
-  EnumMember = ' ',
-  Constant = '󰏿 ',
-  Struct = ' ',
-  Event = ' ',
-  Operator = '󰆕 ',
-  TypeParameter = '󰅲 ',
-}
-
-require('snippy').setup({})
-
-cmp.setup({
+blink.setup({
+  term = {
+    enabled = false,
+  },
+  keymap = {
+    preset = 'none',
+    ['<c-k>'] = { 'select_prev' },
+    ['<c-j>'] = { 'select_next' },
+    ['<c-space>'] = { 'show' },
+    ['<tab>'] = {
+      'accept',
+      'fallback',
+    },
+  },
+  appearance = {
+    nerd_font_variant = 'mono',
+  },
+  completion = {
+    documentation = {
+      auto_show = true,
+      auto_show_delay_ms = 0,
+      window = { border = 'rounded' },
+    },
+    menu = {
+      draw = {
+        columns = {
+          { 'label', 'label_description', gap = 1 },
+          { 'kind_icon', 'kind', gap = 1 },
+        },
+      },
+    },
+  },
   sources = {
-    { name = 'nvim_lsp' },
-    { name = 'buffer' },
-    { name = 'path' },
-  },
-  mapping = cmp.mapping.preset.insert({
-    ['<c-k>'] = cmp.mapping.select_prev_item(),
-    ['<c-j>'] = cmp.mapping.select_next_item(),
-    ['<c-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-1), { 'i', 'c' }),
-    ['<c-f>'] = cmp.mapping(cmp.mapping.scroll_docs(1), { 'i', 'c' }),
-    ['<c-space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-    ['<c-y>'] = cmp.config.disable,
-    ['<c-e>'] = cmp.mapping({
-      i = cmp.mapping.abort(),
-      c = cmp.mapping.close(),
-    }),
-    ['<tab>'] = cmp.mapping.confirm({
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
-    }),
-  }),
-  snippet = {
-    expand = function(args) require('snippy').expand_snippet(args.body) end,
-  },
-  window = {
-    documentation = cmp.config.window.bordered(),
-  },
-  formatting = {
-    format = function(entry, vim_item)
-      vim_item.kind =
-        string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind)
-      vim_item.menu = ({
-        buffer = '[Buffer]',
-        nvim_lsp = '[LSP]',
-        nvim_lua = '[Lua]',
-        latex_symbols = '[LaTeX]',
-      })[entry.source.name]
-      return vim_item
+    default = function(_) return { 'lsp', 'path', 'snippets', 'buffer' } end,
+    transform_items = function(_, items)
+      return vim.tbl_filter(
+        function(item)
+          return item.kind
+            ~= require('blink.cmp.types').CompletionItemKind.Snippet
+        end,
+        items
+      )
     end,
+    providers = {
+      lsp = {
+        module = 'blink.cmp.sources.lsp',
+        fallbacks = {},
+      },
+      buffer = {
+        module = 'blink.cmp.sources.buffer',
+        score_offset = -5,
+      },
+    },
+  },
+  fuzzy = {
+    implementation = 'prefer_rust',
+    max_typos = function(keyword) return math.floor(#keyword / 4) end,
+    use_frecency = true,
+    use_proximity = true,
+    use_unsafe_no_lock = false,
+    sorts = {
+      'score',
+      'sort_text',
+    },
   },
 })
 
-return {
-  cmp_capabilities,
-}
+return capabilities

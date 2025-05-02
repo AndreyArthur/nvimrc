@@ -31,9 +31,12 @@ vim.diagnostic.config({
     source = true,
     format = format,
   },
+  signs = {
+    text = {
+      [vim.diagnostic.severity.WARN] = signs.Warning,
+      [vim.diagnostic.severity.ERROR] = signs.Error,
+      [vim.diagnostic.severity.INFO] = signs.Information,
+      [vim.diagnostic.severity.HINT] = signs.Hint,
+    },
+  },
 })
-
-for type, icon in pairs(signs) do
-  local hl = 'DiagnosticSign' .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = '' })
-end

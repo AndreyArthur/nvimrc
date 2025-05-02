@@ -70,17 +70,6 @@ require('lazy').setup({
       'nvimtools/none-ls-extras.nvim',
     },
   },
-  {
-    'neovim/nvim-lspconfig',
-    dependencies = {
-      { 'hrsh7th/nvim-cmp', commit = 'b356f2c' },
-      'hrsh7th/cmp-cmdline',
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-path',
-      'hrsh7th/cmp-nvim-lua',
-      'dcampos/nvim-snippy',
-      'dcampos/cmp-snippy',
-    },
-  },
+  'neovim/nvim-lspconfig',
+  'saghen/blink.cmp',
 })

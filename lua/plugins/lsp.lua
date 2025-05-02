@@ -2,24 +2,30 @@ local lspconfig = require('lspconfig')
 local lsp_defaults = lspconfig.util.default_config
 local completion_capabilities = require('plugins.completion')
 
-vim.lsp.handlers['textDocument/hover'] =
-  vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' })
-
-vim.lsp.handlers['textDocument/signatureHelp'] =
-  vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' })
-
 lsp_defaults.capabilities = vim.tbl_deep_extend(
   'force',
   lsp_defaults.capabilities,
   completion_capabilities
 )
 
+local hover = function()
+  return vim.lsp.buf.hover({
+    border = 'rounded',
+  })
+end
+
+local signature_help = function()
+  return vim.lsp.buf.signature_help({
+    border = 'solid',
+  })
+end
+
 vim.api.nvim_create_autocmd('LspAttach', {
   desc = 'LSP actions',
   callback = function(event)
     local opts = { buffer = event.buf }
 
-    vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
+    vim.keymap.set('n', 'K', hover, opts)
     vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
     vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
     vim.keymap.set(
@@ -35,13 +41,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
       opts
     )
     vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
-    vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
-    vim.keymap.set(
-      'i',
-      '<c-;>',
-      '<cmd>lua vim.lsp.buf.signature_help()<cr>',
-      opts
-    )
+    vim.keymap.set('n', 'gs', signature_help, opts)
+    vim.keymap.set('i', '<c-;>', signature_help, opts)
     vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
     vim.keymap.set(
       { 'n', 'x' },
@@ -71,7 +72,7 @@ lspconfig.lua_ls.setup({
     },
   },
 })
-lspconfig.ocamllsp.setup({})
 lspconfig.gopls.setup({})
 lspconfig.clangd.setup({})
 lspconfig.pyright.setup({})
+lspconfig.rust_analyzer.setup({})
