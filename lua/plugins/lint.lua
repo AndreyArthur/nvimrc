@@ -11,13 +11,37 @@ none_ls.setup({
   },
 })
 
+local requirements = {
+  ['c'] = { '.clang-format' },
+}
+
+local reqs_are_met = function(filetype)
+  local reqs = requirements[filetype]
+  if reqs == nil then
+    return true
+  end
+
+  for _, file in ipairs(reqs) do
+    if vim.fn.filereadable(file) == 0 then
+      return false
+    end
+  end
+
+  return true
+end
+
 local is_null_ls_active = function()
+  if not reqs_are_met(vim.bo.filetype) then
+    return false
+  end
+
   local clients = vim.lsp.get_active_clients()
   for _, client in pairs(clients) do
     if client.name == 'null-ls' then
       return true
     end
   end
+
   return false
 end
 
