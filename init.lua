@@ -1,6 +1,6 @@
 require('config')
 require('keymaps')
+require('scripts')
 require('plugins')
 require('plugins.exports')
-require('scripts')
 require('colorscheme')
