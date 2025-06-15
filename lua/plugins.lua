@@ -17,7 +17,7 @@ require('lazy').setup({
   -- Statusline and Tabline
   {
     'nvim-lualine/lualine.nvim', -- LuaLine
-    dependencies = { 'nvim-tree/nvim-web-devicons', lazy = true },
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
   },
 
   --Themes
@@ -38,7 +38,7 @@ require('lazy').setup({
 
   -- Git integration
   'tpope/vim-fugitive', -- Fugitive
-  'lewis6991/gitsigns.nvim', -- Git Signs
+  { 'lewis6991/gitsigns.nvim', tag = 'v1.0.2' }, -- Git Signs
 
   -- Fuzzy find, Grep...
   {
@@ -59,8 +59,8 @@ require('lazy').setup({
   -- Edit terminal
   'chomosuke/term-edit.nvim',
 
-  -- AI integration
-  'Exafunction/codeium.vim',
+  'rktjmp/lush.nvim',
+  { dir = '~/.code/null/angra/' },
 
   -- LSP and code related things
   'echasnovski/mini.splitjoin', -- Spread lines
