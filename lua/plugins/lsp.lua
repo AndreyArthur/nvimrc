@@ -20,46 +20,30 @@ local signature_help = function()
   })
 end
 
+local format = function() vim.lsp.buf.format({ async = true }) end
+
+local code_actions = function() return vim.lsp.buf.code_action({ apply = true }) end
+
 vim.api.nvim_create_autocmd('LspAttach', {
   desc = 'LSP actions',
   callback = function(event)
     local opts = { buffer = event.buf }
 
     vim.keymap.set('n', 'K', hover, opts)
-    vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
-    vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
-    vim.keymap.set(
-      'n',
-      '<leader>gi',
-      '<cmd>lua vim.lsp.buf.implementation()<cr>',
-      opts
-    )
-    vim.keymap.set(
-      'n',
-      'go',
-      '<cmd>lua vim.lsp.buf.type_definition()<cr>',
-      opts
-    )
-    vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+    vim.keymap.set('n', '<leader>gi', vim.lsp.buf.implementation, opts)
+    vim.keymap.set('n', 'go', vim.lsp.buf.type_definition, opts)
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
     vim.keymap.set('n', 'gs', signature_help, opts)
     vim.keymap.set('i', '<c-;>', signature_help, opts)
-    vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-    vim.keymap.set(
-      { 'n', 'x' },
-      '<F3>',
-      '<cmd>lua vim.lsp.buf.format({ async = true })<cr>',
-      opts
-    )
-    vim.keymap.set(
-      'n',
-      '<F4>',
-      '<cmd>lua vim.lsp.buf.code_action({ apply = true })<cr>',
-      opts
-    )
+    vim.keymap.set('n', '<F2>', vim.lsp.buf.rename, opts)
+    vim.keymap.set({ 'n', 'x' }, '<F3>', format, opts)
+    vim.keymap.set('n', '<F4>', code_actions, opts)
 
-    vim.keymap.set('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>', opts)
-    vim.keymap.set('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>', opts)
-    vim.keymap.set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>', opts)
+    vim.keymap.set('n', 'gl', vim.diagnostic.open_float, opts)
+    vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
+    vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
   end,
 })
 
@@ -77,3 +61,26 @@ lspconfig.clangd.setup({})
 lspconfig.pyright.setup({})
 lspconfig.rust_analyzer.setup({})
 lspconfig.ts_ls.setup({})
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'java',
+  group = vim.api.nvim_create_augroup('JavaConfig', { clear = true }),
+  callback = function(opts)
+    local config = {
+      cmd = { '/usr/bin/jdtls' },
+      settings = {
+        ['java.format.settings.url'] = vim.fn.expand('~/Documents/format.xml'),
+      },
+      root_dir = vim.fs.dirname(
+        vim.fs.find({ 'gradlew', '.git', 'mvnw' }, { upward = true })[1]
+      ),
+    }
+    require('jdtls').start_or_attach(config)
+
+    vim.api.nvim_create_autocmd('BufWritePre', {
+      pattern = { '*.java' },
+      command = 'lua vim.lsp.buf.format()',
+      group = vim.api.nvim_create_augroup('JdtlsFormat', {}),
+    })
+  end,
+})

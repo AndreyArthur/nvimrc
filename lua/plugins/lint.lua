@@ -35,7 +35,7 @@ local is_null_ls_active = function()
     return false
   end
 
-  local clients = vim.lsp.get_active_clients()
+  local clients = vim.lsp.get_clients()
   for _, client in pairs(clients) do
     if client.name == 'null-ls' then
       return true

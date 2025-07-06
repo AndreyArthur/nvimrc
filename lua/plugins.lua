@@ -36,11 +36,11 @@ require('lazy').setup({
   },
   'lukas-reineke/indent-blankline.nvim',
 
-  -- Git integration
+  -- Git
   'tpope/vim-fugitive', -- Fugitive
   { 'lewis6991/gitsigns.nvim', tag = 'v1.0.2' }, -- Git Signs
 
-  -- Fuzzy find, Grep...
+  -- Pickers
   {
     'nvim-telescope/telescope.nvim', -- Telescope
     dependencies = {
@@ -56,11 +56,8 @@ require('lazy').setup({
     dependencies = { 'nvim-lua/plenary.nvim' },
   },
 
-  -- Edit terminal
+  -- Terminal
   'chomosuke/term-edit.nvim',
-
-  'rktjmp/lush.nvim',
-  { dir = '~/.code/null/angra/' },
 
   -- LSP and code related things
   'echasnovski/mini.splitjoin', -- Spread lines
@@ -71,5 +68,11 @@ require('lazy').setup({
     },
   },
   'neovim/nvim-lspconfig',
-  'saghen/blink.cmp',
+  'mfussenegger/nvim-jdtls',
+
+  -- Completion
+  {
+    'saghen/blink.cmp',
+    build = 'cargo build --release',
+  },
 })

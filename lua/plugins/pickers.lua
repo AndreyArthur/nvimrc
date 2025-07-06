@@ -2,29 +2,6 @@ local harpoon = require('harpoon')
 local telescope = require('telescope')
 local telescope_builtin = require('telescope.builtin')
 
-local filter_except = function(original_table, exceptions)
-  local has_value = function(tbl, value)
-    for _, v in ipairs(tbl) do
-      if v == value then
-        return true
-      end
-    end
-    return false
-  end
-
-  local new_table = {}
-  local index = 1
-
-  for _, v in ipairs(original_table) do
-    if not has_value(exceptions, v) then
-      new_table[index] = v
-      index = index + 1
-    end
-  end
-
-  return new_table
-end
-
 local themes_config = {
   ignore = {
     'blue',
@@ -128,6 +105,9 @@ local ignored = ignore({
   'zig-out',
   'zig-cache',
   'target',
+  '.mvn',
+  '.metadata',
+  '.settings',
 })
 
 local options = {
